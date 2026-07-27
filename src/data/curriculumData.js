@@ -450,98 +450,366 @@ Pourquoi ne doit-on pas utiliser java.util.Vector dans une application moderne ?
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     description: "Sujet officiel mot à mot (Durée: 2h00). Ce sujet comporte 05 exercices en 02 pages. Aucun document n'est autorisé.",
     questions: [
+      // ==========================================
+      // EXERCICE 1 : MATRICE & JORDAN (4 Questions)
+      // ==========================================
       {
-        id: "2025-math-ex1",
-        title: "EXERCICE 1 : Matrice & Jordan (5 pts)",
+        id: "2025-math-ex1-q1",
+        title: "EXERCICE 1 : Matrice & Jordan (Question 1/4 : Polynôme Caractéristique)",
         type: "code_written",
-        difficulty: "Difficile",
-        prompt: `EXERCICE 1 : (5 points)
+        difficulty: "Moyen",
+        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
 
+CONTEXTE & ÉNONCÉ :
 Soit A la matrice de M4(R) suivante :
 [-2  -1   1   2]
 [ 1  -4   1   2]
 [ 0   0  -5   4]
 [ 0   0  -1  -1]
 
-1) Déterminer le polynôme caractéristique de A.
-2) Déterminer les valeurs propres de A.
-3) La matrice A est-elle diagonalisable ? Justifier votre réponse.
-4) Déterminer une réduite de Jordan de A.`,
-        explanation: `1) P_A(X) = (X + 3)^4.
-2) Valeur propre unique : λ = -3 (multiplicité 4).
-3) dim(E_-3) = 4 - rg(A + 3I) = 4 - 2 = 2 < 4. A n'est PAS diagonalisable.
-4) Réduite de Jordan J formée de 2 blocs de Jordan associés à λ = -3.`,
-        hint: "Décomposez la matrice en blocs 2x2."
+--------------------------------------------------
+QUESTION 1 :
+Déterminer le polynôme caractéristique P_A(X) de la matrice A.`,
+        explanation: `La matrice A est triangulaire supérieure par blocs.
+P_A(X) = det(X I_2 - A_11) * det(X I_2 - A_22)
+
+• det(X I_2 - A_11) = (X+2)(X+4) + 1 = X^2 + 6X + 9 = (X+3)^2
+• det(X I_2 - A_22) = (X+5)(X+1) + 4 = X^2 + 6X + 9 = (X+3)^2
+
+Ainsi, P_A(X) = (X + 3)^4.`,
+        hint: "Décomposez le déterminant de la matrice triangulaire par blocs."
       },
       {
-        id: "2025-math-ex2",
-        title: "EXERCICE 2 : Suites & Télescopage (5 pts)",
+        id: "2025-math-ex1-q2",
+        title: "EXERCICE 1 : Matrice & Jordan (Question 2/4 : Valeurs Propres)",
+        type: "short_answer",
+        difficulty: "Facile",
+        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
+
+CONTEXTE & ÉNONCÉ :
+Soit A la matrice de M4(R) suivante :
+[-2  -1   1   2]
+[ 1  -4   1   2]
+[ 0   0  -5   4]
+[ 0   0  -1  -1]
+
+(Rappel Q1 : P_A(X) = (X + 3)^4)
+
+--------------------------------------------------
+QUESTION 2 :
+Déterminer les valeurs propres de la matrice A et leur multiplicité algébrique.`,
+        correctAnswerKey: "λ = -3 (multiplicité 4)",
+        explanation: `P_A(X) = (X + 3)^4. La seule racine est λ = -3.
+La matrice A admet donc une unique valeur propre λ = -3 de multiplicité algébrique 4.`,
+        hint: "Recherchez les racines de P_A(X) = (X + 3)^4."
+      },
+      {
+        id: "2025-math-ex1-q3",
+        title: "EXERCICE 1 : Matrice & Jordan (Question 3/4 : Diagonalisabilité)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 2 : (5 points)
+        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
 
+CONTEXTE & ÉNONCÉ :
+Soit A la matrice de M4(R) suivante :
+[-2  -1   1   2]
+[ 1  -4   1   2]
+[ 0   0  -5   4]
+[ 0   0  -1  -1]
+
+(Rappel : Valeur propre unique λ = -3 de multiplicité 4)
+
+--------------------------------------------------
+QUESTION 3 :
+La matrice A est-elle diagonalisable ? Justifier votre réponse.`,
+        explanation: `Calculons la dimension du sous-espace propre E_-3(A) = Ker(A + 3 I_4) :
+A + 3 I_4 a pour rang 2 (rg = 2).
+Par le théorème du rang : dim(E_-3(A)) = 4 - 2 = 2.
+
+Comme dim(E_-3(A)) = 2 < 4 (multiplicité algébrique), la matrice A N'EST PAS diagonalisable.`,
+        hint: "Calculez dim(Ker(A + 3I)). Est-elle égale à 4 ?"
+      },
+      {
+        id: "2025-math-ex1-q4",
+        title: "EXERCICE 1 : Matrice & Jordan (Question 4/4 : Réduite de Jordan)",
+        type: "code_written",
+        difficulty: "Difficile",
+        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
+
+CONTEXTE & ÉNONCÉ :
+Soit A la matrice de M4(R) suivante :
+[-2  -1   1   2]
+[ 1  -4   1   2]
+[ 0   0  -5   4]
+[ 0   0  -1  -1]
+
+(Rappel : λ = -3, dim(E_-3) = 2, (A + 3I)^2 = 0)
+
+--------------------------------------------------
+QUESTION 4 :
+Déterminer une réduite de Jordan J de la matrice A.`,
+        explanation: `1. Nombre de blocs de Jordan = dim(E_-3(A)) = 2.
+2. Indice de nilpotence = 2 car (A + 3I_4)^2 = 0_4.
+3. La seule partition de 4 en 2 blocs de taille max 2 est (2, 2).
+
+Réduite de Jordan J :
+J = [ -3  1  0  0 ]
+    [  0 -3  0  0 ]
+    [  0  0 -3  1 ]
+    [  0  0  0 -3 ]`,
+        hint: "2 blocs de Jordan J_2(-3) de taille 2."
+      },
+
+      // ==========================================
+      // EXERCICE 2 : SUITES & TÉLESCOPAGE (5 Questions)
+      // ==========================================
+      {
+        id: "2025-math-ex2-q1",
+        title: "EXERCICE 2 : Suites & Télescopage (Question 1/5)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+
+CONTEXTE & ÉNONCÉ :
 Soit n dans N*. On définit trois suites u_n, v_n et S_n par :
 u_n = sum_{k=1}^n 1/k ; v_n = sum_{k=1}^n k^2 et S_n = sum_{k=1}^n 1/v_k
 
-1) Calculer de deux façons différentes sum_{k=1}^n ((k+1)^3 - k^3).
-2) Montrer que forall n dans N*, v_n = n(n+1)(2n+1)/6.
-3) Déterminer les réels a, b et c tels que :
-forall n dans N*, 1/(n(n+1)(2n+1)) = a/n + b/(n+1) + c/(2n+1)
-4) Montrer que forall n dans N*, sum_{k=1}^n 1/(2k+1) = u_{n+1} - 1/2 u_n - 1.
-5) Exprimer pour n dans N*, S_n à l'aide de la suite u_n.`,
-        explanation: `1) Par télescopage : (n+1)^3 - 1.
-2) En développant (k+1)^3 - k^3 = 3k^2 + 3k + 1.
-3) a = 1, b = 1, c = -4.
-5) Expression de S_n au moyen de u_n.`,
-        hint: "Développez (k+1)^3 - k^3 = 3k^2 + 3k + 1."
+--------------------------------------------------
+QUESTION 1 :
+Calculer de deux façons différentes sum_{k=1}^n ((k+1)^3 - k^3).`,
+        explanation: `1ère façon (Télescopage) : sum_{k=1}^n ((k+1)^3 - k^3) = (n+1)^3 - 1^3 = (n+1)^3 - 1.
+2ème façon (Développement) : (k+1)^3 - k^3 = 3k^2 + 3k + 1.
+D'où sum = 3 sum(k^2) + 3 sum(k) + sum(1) = 3 v_n + 3 (n(n+1)/2) + n.`,
+        hint: "Identifiez le télescopage d'un côté et développez (k+1)^3 de l'autre."
       },
       {
-        id: "2025-math-ex3",
-        title: "EXERCICE 3 : Normes C1 (4 pts)",
+        id: "2025-math-ex2-q2",
+        title: "EXERCICE 2 : Suites & Télescopage (Question 2/5)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 3 : (4 points)
+        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
-On note E le R-espace vectoriel des applications f : [0; 1] -> R de classe C1 telles que f(0) = 0.
-On note pour toute f dans E :
-N(f) = integral_0^1 |f'| et V(f) = integral_0^1 |f' + f|
+CONTEXTE :
+u_n = sum 1/k, v_n = sum k^2, S_n = sum 1/v_k.
+sum_{k=1}^n ((k+1)^3 - k^3) = (n+1)^3 - 1 = 3 v_n + 3 n(n+1)/2 + n.
 
-1) Donner la définition d'une norme sur E.
-2) Résoudre dans E l'équation différentielle f' + f = 0.
-3) Montrer que N et V sont des normes sur E.
-4) Montrer que pour toute f dans E : V(f) <= 2 N(f).`,
-        explanation: `1) Séparation, Homogénéité, Inégalité triangulaire.
-2) f(x) = C e^-x. f(0) = 0 => C = 0 donc f = 0.
-3) N et V vérifient les 3 axiomes des normes.
-4) |f(x)| <= N(f), d'où V(f) <= N(f) + N(f) = 2 N(f).`,
-        hint: "Utilisez f(0)=0 pour l'axiome de séparation."
+--------------------------------------------------
+QUESTION 2 :
+Montrer que pour tout n dans N*, v_n = n(n+1)(2n+1)/6.`,
+        explanation: `En égalant les deux expressions de Q1 :
+3 v_n = (n+1)^3 - 1 - 3n(n+1)/2 - n
+      = n^3 + 3n^2 + 3n - 3n(n+1)/2 - n
+      = n(2n^2 + 6n + 4 - 3n - 3)/2
+      = n(2n^2 + 3n + 1)/2
+      = n(n+1)(2n+1)/2
+D'où v_n = n(n+1)(2n+1)/6.`,
+        hint: "Isolez v_n dans 3 v_n = (n+1)^3 - 1 - 3n(n+1)/2 - n."
       },
       {
-        id: "2025-math-ex4",
-        title: "EXERCICE 4 : Harmoniques du Signal (4 pts)",
-        type: "short_answer",
+        id: "2025-math-ex2-q3",
+        title: "EXERCICE 2 : Suites & Télescopage (Question 3/5)",
+        type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 4 : (4 points)
+        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
-Un signal rectangulaire d'amplitude A et de fréquence f se décompose en une somme de fonctions sinusoïdales de la manière suivante :
-e(t) = (4/π) A sum_{n=0}^{+infty} (1/(2n+1)) sin((2n+1)ω t)
-
-1. Donner l'amplitude et la fréquence du fondamental d'un signal rectangulaire de fréquence 4 kHz et d'amplitude 3 volt.
-2. Donner l'amplitude et la fréquence du 1er harmonique.
-3. Donner l'amplitude et la fréquence du 2ème harmonique.
-4. Représenter sur un graphe les différents harmoniques plus le fondamental, on placera en abscisse les fréquences et en ordonnée les amplitudes.`,
-        correctAnswerKey: "Fondamental: 4 kHz, 12/π V (~3.82V). 1er harmonique: 12 kHz, 4/π V (~1.27V). 2ème harmonique: 20 kHz, 12/(5π) V (~0.76V).",
-        explanation: "1. n=0 : f0 = 4 kHz, A0 = 12/π V.\n2. n=1 : f1 = 12 kHz, A1 = 4/π V.\n3. n=2 : f2 = 20 kHz, A2 = 12/(5π) V.",
-        hint: "Pour l'harmonique de rang n, la fréquence est (2n+1)*f."
+--------------------------------------------------
+QUESTION 3 :
+Déterminer les réels a, b et c tels que :
+forall n dans N*, 1 / (n(n+1)(2n+1)) = a/n + b/(n+1) + c/(2n+1).`,
+        explanation: `Par réduction au même dénominateur ou identification aux pôles :
+• Pour n=0 : a = 1
+• Pour n=-1 : b = 1
+• Pour n=-1/2 : c = -4
+Vérification : 1/n + 1/(n+1) - 4/(2n+1) = (2n+1 + n)/(n(n+1)(2n+1)) - 4n(n+1) ... = 1/(n(n+1)(2n+1)).`,
+        hint: "Multipliez par n et posez n=0 pour trouver a, etc."
       },
+      {
+        id: "2025-math-ex2-q4",
+        title: "EXERCICE 2 : Suites & Télescopage (Question 4/5)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+
+CONTEXTE :
+u_n = sum_{k=1}^n 1/k.
+
+--------------------------------------------------
+QUESTION 4 :
+Montrer que pour tout n dans N*, sum_{k=1}^n 1/(2k+1) = u_{2n+1} - 1/2 u_n - 1.`,
+        explanation: `sum_{k=1}^n 1/(2k+1) est la somme des termes impairs de 3 à 2n+1.
+Somme totale u_{2n+1} = 1 + sum_{impairs} 1/(2k+1) + sum_{pairs} 1/(2k).
+Or sum_{pairs} 1/(2k) = (1/2) sum_{k=1}^n 1/k = (1/2) u_n.
+D'où u_{2n+1} = 1 + sum_{k=1}^n 1/(2k+1) + (1/2) u_n
+=> sum_{k=1}^n 1/(2k+1) = u_{2n+1} - 1/2 u_n - 1.`,
+        hint: "Séparez la somme des nombres pairs et des nombres impairs."
+      },
+      {
+        id: "2025-math-ex2-q5",
+        title: "EXERCICE 2 : Suites & Télescopage (Question 5/5)",
+        type: "code_written",
+        difficulty: "Difficile",
+        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+
+CONTEXTE :
+v_k = k(k+1)(2k+1)/6, donc 1/v_k = 6 / (k(k+1)(2k+1)).
+1/(k(k+1)(2k+1)) = 1/k + 1/(k+1) - 4/(2k+1).
+
+--------------------------------------------------
+QUESTION 5 :
+Exprimer pour n dans N*, S_n = sum_{k=1}^n 1/v_k à l'aide de la suite u_n.`,
+        explanation: `S_n = 6 sum_{k=1}^n (1/k + 1/(k+1) - 4/(2k+1))
+    = 6 [ u_n + (u_{n+1} - 1) - 4 (u_{2n+1} - 1/2 u_n - 1) ]
+    = 6 [ 3 u_n + u_{n+1} - 4 u_{2n+1} + 3 ].`,
+        hint: "Injectez la décomposition de la Q3 et le résultat de la Q4."
+      },
+
+      // ==========================================
+      // EXERCICE 3 : NORMES C1 (4 Questions)
+      // ==========================================
+      {
+        id: "2025-math-ex3-q1",
+        title: "EXERCICE 3 : Normes C1 (Question 1/4 : Définition)",
+        type: "code_written",
+        difficulty: "Facile",
+        prompt: `EXERCICE 3 : Normes C1 (4 points)
+
+CONTEXTE :
+Soit E le R-espace vectoriel des applications f : [0; 1] -> R de classe C1 telles que f(0) = 0.
+
+--------------------------------------------------
+QUESTION 1 :
+Donner la définition d'une norme sur l'espace vectoriel E.`,
+        explanation: `Une norme sur E est une application N : E -> R+ vérifiant pour tout f, g dans E et tout λ dans R :
+1) Séparation : N(f) = 0 <=> f = 0.
+2) Homogénéité : N(λ f) = |λ| N(f).
+3) Inégalité triangulaire : N(f + g) <= N(f) + N(g).`,
+        hint: "Énoncez les 3 axiomes : Séparation, Homogénéité, Inégalité triangulaire."
+      },
+      {
+        id: "2025-math-ex3-q2",
+        title: "EXERCICE 3 : Normes C1 (Question 2/4 : Équation Différentielle)",
+        type: "code_written",
+        difficulty: "Facile",
+        prompt: `EXERCICE 3 : Normes C1 (4 points)
+
+CONTEXTE :
+E = { f dans C1([0, 1], R) | f(0) = 0 }.
+
+--------------------------------------------------
+QUESTION 2 :
+Résoudre dans E l'équation différentielle f' + f = 0.`,
+        explanation: `Les solutions de f' + f = 0 sont les fonctions f(x) = C e^-x avec C dans R.
+Comme f appartient à E, on a f(0) = 0, d'où C e^0 = 0 => C = 0.
+La seule solution dans E est la fonction nulle f = 0.`,
+        hint: "Solutions générales C*e^(-x), puis utilisez la condition f(0) = 0."
+      },
+      {
+        id: "2025-math-ex3-q3",
+        title: "EXERCICE 3 : Normes C1 (Question 3/4 : Démonstration Normes)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `EXERCICE 3 : Normes C1 (4 points)
+
+CONTEXTE :
+Pour tout f dans E (avec f(0) = 0) :
+N(f) = integral_0^1 |f'|  et  V(f) = integral_0^1 |f' + f|
+
+--------------------------------------------------
+QUESTION 3 :
+Montrer que N et V sont des normes sur E.`,
+        explanation: `Pour N(f) :
+• Homogénéité et Inégalité triangulaire découlent de la linéarité et de la valeur absolue sur l'intégrale.
+• Séparation : N(f) = 0 => integral |f'| = 0 => f' = 0 (car f' est continue) => f est constante. Comme f(0) = 0, f = 0.
+
+Pour V(f) :
+• Idem. Séparation : V(f) = 0 => integral |f' + f| = 0 => f' + f = 0 => f = 0 (d'après Q2).
+Ainsi N et V sont des normes sur E.`,
+        hint: "Pour la séparation de V, réutilisez le résultat de la Q2."
+      },
+      {
+        id: "2025-math-ex3-q4",
+        title: "EXERCICE 3 : Normes C1 (Question 4/4 : Majoration)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `EXERCICE 3 : Normes C1 (4 points)
+
+--------------------------------------------------
+QUESTION 4 :
+Montrer que pour toute f dans E, V(f) <= 2 N(f).`,
+        explanation: `Pour x dans [0, 1], f(x) = f(0) + integral_0^x f'(t) dt = integral_0^x f'(t) dt.
+Donc |f(x)| <= integral_0^x |f'(t)| dt <= integral_0^1 |f'(t)| dt = N(f).
+Alors V(f) = integral_0^1 |f' + f| <= integral_0^1 |f'| + integral_0^1 |f| <= N(f) + N(f) = 2 N(f).`,
+        hint: "Majorez |f(x)| par N(f) en intégrant f'."
+      },
+
+      // ==========================================
+      // EXERCICE 4 : HARMONIQUES DU SIGNAL (3 Questions)
+      // ==========================================
+      {
+        id: "2025-math-ex4-q1",
+        title: "EXERCICE 4 : Harmoniques du Signal (Question 1/3 : Fondamental)",
+        type: "short_answer",
+        difficulty: "Facile",
+        prompt: `EXERCICE 4 : Harmoniques du Signal (4 points)
+
+CONTEXTE :
+e(t) = (4/π) A sum_{n=0}^{+infty} (1/(2n+1)) sin((2n+1) ω t)
+Signal rectangulaire de fréquence f = 4 kHz et d'amplitude A = 3 Volt.
+
+--------------------------------------------------
+QUESTION 1 :
+Donner l'amplitude et la fréquence du FONDAMENTAL (rang n=0).`,
+        correctAnswerKey: "Fréquence: 4 kHz, Amplitude: 12/π Volt (~3.82 V)",
+        explanation: "Pour n=0 (Fondamental) : f0 = f = 4 kHz. Amplitude A0 = (4/π) * 3 = 12/π Volt ≈ 3.82 V.",
+        hint: "Prenez n=0 dans la formule d'onde."
+      },
+      {
+        id: "2025-math-ex4-q2",
+        title: "EXERCICE 4 : Harmoniques du Signal (Question 2/3 : 1er Harmonique)",
+        type: "short_answer",
+        difficulty: "Facile",
+        prompt: `EXERCICE 4 : Harmoniques du Signal (4 points)
+
+CONTEXTE :
+Signal rectangulaire f = 4 kHz, A = 3 V.
+
+--------------------------------------------------
+QUESTION 2 :
+Donner l'amplitude et la fréquence du 1er harmonique non nul (n=1).`,
+        correctAnswerKey: "Fréquence: 12 kHz, Amplitude: 4/π Volt (~1.27 V)",
+        explanation: "Pour n=1 : f1 = 3 * f = 12 kHz. Amplitude A1 = (4/π * 3) / 3 = 4/π Volt ≈ 1.27 V.",
+        hint: "Prenez n=1 dans la somme (fréquence 3f)."
+      },
+      {
+        id: "2025-math-ex4-q3",
+        title: "EXERCICE 4 : Harmoniques du Signal (Question 3/3 : 2ème Harmonique)",
+        type: "short_answer",
+        difficulty: "Facile",
+        prompt: `EXERCICE 4 : Harmoniques du Signal (4 points)
+
+--------------------------------------------------
+QUESTION 3 :
+Donner l'amplitude et la fréquence du 2ème harmonique non nul (n=2).`,
+        correctAnswerKey: "Fréquence: 20 kHz, Amplitude: 12/(5π) Volt (~0.76 V)",
+        explanation: "Pour n=2 : f2 = 5 * f = 20 kHz. Amplitude A2 = (4/π * 3) / 5 = 12/(5π) Volt ≈ 0.76 V.",
+        hint: "Prenez n=2 dans la somme (fréquence 5f)."
+      },
+
+      // ==========================================
+      // EXERCICE 5 : BERNOULLI EMV (1 Question)
+      // ==========================================
       {
         id: "2025-math-ex5",
         title: "EXERCICE 5 : Bernoulli EMV (2 pts)",
         type: "short_answer",
         difficulty: "Facile",
-        prompt: `EXERCICE 5 : (2 points)
+        prompt: `EXERCICE 5 : Estimateur du Maximum de Vraisemblance (2 points)
 
-On considère un échantillon (X1, X2, ..., Xn) issu d'une loi de Bernoulli de paramètre θ, avec θ dans ]0, 1[. Déterminer l'estimateur du maximum de vraisemblance de θ.`,
+On considère un échantillon (X1, X2, ..., Xn) issu d'une loi de Bernoulli de paramètre θ, avec θ dans ]0, 1[.
+
+--------------------------------------------------
+QUESTION :
+Déterminer l'estimateur du maximum de vraisemblance θ_EMV de θ.`,
         correctAnswerKey: "θ_EMV = (1/n) * sum Xi = X_barre",
         explanation: "L(θ) = θ^(sum Xi) * (1-θ)^(n - sum Xi). La dérivée du log rend θ = (1/n) sum Xi = X_barre.",
         hint: "La réponse est la moyenne empirique X_barre."
