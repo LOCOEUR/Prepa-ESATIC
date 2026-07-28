@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { evaluateMathAnswer } from '../utils/mathDiagnostic';
+import MathText from './MathText';
 
 export default function QuizSession({ questions = [], sessionTitle, onBack }) {
   const { progress, markQuestionResult } = useRevision();
