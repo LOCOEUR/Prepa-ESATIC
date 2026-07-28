@@ -5,6 +5,7 @@ import {
   Lightbulb, ChevronRight, Clock, Sparkles, Send, ShieldCheck, Image as ImageIcon, Maximize2, X, FileText
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import MathText from './MathText';
 
 export default function QuizSession({ questions, sessionTitle, onBack }) {
   const { progress, markQuestionResult } = useRevision();
@@ -230,7 +231,7 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
             {currentQ.title}
           </h3>
           <div className="text-sm text-gray-200 prompt-text prompt-box-dark">
-            {currentQ.prompt}
+            <MathText text={currentQ.prompt} />
           </div>
         </div>
 
@@ -246,10 +247,10 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
               </button>
             ) : (
               <div className="hint-box-dark">
-                <div className="font-bold flex items-center gap-1.5 text-amber-300">
+                <div className="font-bold flex items-center gap-1.5 text-amber-300 mb-1">
                   <Lightbulb className="w-4 h-4 text-amber-400" /> Indice :
                 </div>
-                <p>{currentQ.hint}</p>
+                <MathText text={currentQ.hint} />
               </div>
             )}
           </div>
@@ -278,7 +279,7 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
                     disabled={!!feedback}
                     className={btnStyle}
                   >
-                    <span>{opt.text}</span>
+                    <span><MathText text={opt.text} /></span>
                     {feedback && opt.isCorrect && (
                       <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
                     )}
@@ -336,8 +337,8 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
                 <h4 className="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-purple-400" /> Explication de l'erreur & Correction :
                 </h4>
-                <div className="text-xs text-gray-200 font-mono prompt-text prompt-box-dark leading-relaxed">
-                  {currentQ.explanation}
+                <div className="text-xs text-gray-200 prompt-text prompt-box-dark leading-relaxed">
+                  <MathText text={currentQ.explanation} />
                 </div>
               </div>
             )}
