@@ -346,43 +346,63 @@ CREATE TABLE SINISTRE (
         hint: "Utilisez la syntaxe CONSTRAINT nom_contrainte PRIMARY KEY / FOREIGN KEY / CHECK."
       },
 
-      // EXERCICE 5
+      // EXERCICE 5 : PHP - PDO & SÉCURITÉ (ÉNONCÉ ET QUESTION PAR ÉCRAN)
       {
-        id: "2025-info-ex5-q1",
-        title: "Exercice 5 : PHP - PDO & Sécurité (1/2)",
+        id: "2025-info-ex5-q1a",
+        title: "Exercice 5 : PHP - PDO & Sécurité (Question 1.a : Connexion PDO)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
 
-==================================================
-TRAVAIL À FAIRE (Question 1/2) :
-a) Établissez une connexion PDO sécurisée avec gestion d'erreurs (Try/Catch).
-b) Implémentez une requête préparée pour vérifier les identifiants.`,
+ÉNONCÉ CONTEXTUEL :
+Dans le cadre du développement de la plateforme ESATIC-Services, vous devez sécuriser l'accès aux données des utilisateurs enregistrés dans une base de données MySQL ('esatic').
+
+--------------------------------------------------
+TRAVAIL À FAIRE (Question 1.a) :
+Établissez une connexion PDO sécurisée à la base de données avec gestion d'erreurs d'exception (Try/Catch).`,
         explanation: `try {
     $pdo = new PDO('mysql:host=localhost;dbname=esatic', 'user', 'pass', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
-    
-    $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE login = :login");
-    $stmt->execute([':login' => $login]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    if ($user && password_verify($password, $user['password_hash'])) {
-        echo "Connexion réussie !";
-    }
 } catch (PDOException $e) {
     die("Erreur DB : " . $e->getMessage());
 }`,
-        hint: "PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION et $pdo->prepare()."
+        hint: "Utilisez new PDO() dans un bloc try/catch et configurez PDO::ATTR_ERRMODE."
+      },
+      {
+        id: "2025-info-ex5-q1b",
+        title: "Exercice 5 : PHP - PDO & Sécurité (Question 1.b : Requête Préparée)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
+
+ÉNONCÉ CONTEXTUEL :
+Plateforme ESATIC-Services - Connexion à la base MySQL via $pdo.
+L'utilisateur saisit son login ($login) et son mot de passe ($password).
+
+--------------------------------------------------
+TRAVAIL À FAIRE (Question 1.b) :
+Implémentez une requête préparée sécurisée contre les injections SQL pour vérifier les identifiants de l'utilisateur.`,
+        explanation: `$stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE login = :login");
+$stmt->execute([':login' => $login]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($user && password_verify($password, $user['password_hash'])) {
+    echo "Connexion réussie !";
+}`,
+        hint: "$pdo->prepare() puis $stmt->execute([':login' => $login])."
       },
       {
         id: "2025-info-ex5-q2",
-        title: "Exercice 5 : PHP - PDO & Sécurité (2/2 QCM)",
+        title: "Exercice 5 : PHP - PDO & Sécurité (Question 2 : Stockage Mots de passe)",
         type: "mcq",
         difficulty: "Facile",
         prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
 
-==================================================
+ÉNONCÉ CONTEXTUEL :
+Sécurité des comptes utilisateurs ESATIC-Services.
+
+--------------------------------------------------
 QUESTION 2 :
 Quelle méthode doit être utilisée pour stocker les mots de passe de manière sécurisée en base de données ?`,
         options: [
@@ -395,22 +415,23 @@ Quelle méthode doit être utilisée pour stocker les mots de passe de manière 
         hint: "Utilisez password_hash()."
       },
 
-      // EXERCICE 6
+      // EXERCICE 6 : POO JAVA & COLLECTIONS (ÉNONCÉ ET QUESTION PAR ÉCRAN)
       {
         id: "2025-info-ex6-q1",
-        title: "Exercice 6 : POO Java & Collections (1/3 QCM)",
+        title: "Exercice 6 : POO Java & Collections (Question 1/3 : Choix de Collection)",
         type: "mcq",
         difficulty: "Facile",
-        prompt: `Exercice 6 : Modélisation UML & Collections (4pts)
+        prompt: `Exercice 6 : Modélisation UML & Collections Java (4 pts)
 
-java
+ÉNONCÉ CONTEXTUEL :
+On modélise une gestion de bibliothèque d'ouvrage à l'ESATIC.
 public class Livre {
-    private String isbn; // Format "123-4567890123"
+    private String isbn; // Format unique ex: "123-4567890123"
 }
 
-==================================================
+--------------------------------------------------
 QUESTION 1 :
-Quelle collection utiliser pour stocker des objets Livre sans doublons d'ISBN ?`,
+Quelle collection Java de la Java Collections Framework (JCF) utiliser pour stocker des objets Livre sans doublons d'ISBN ?`,
         options: [
           { id: "a", text: "a. ArrayList", isCorrect: false },
           { id: "b", text: "b. HashSet", isCorrect: true },
@@ -422,16 +443,18 @@ Quelle collection utiliser pour stocker des objets Livre sans doublons d'ISBN ?`
       },
       {
         id: "2025-info-ex6-q2",
-        title: "Exercice 6 : POO Java & Collections (2/3 Code)",
+        title: "Exercice 6 : POO Java & Collections (Question 2/3 : Méthode d'Ajout)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `Exercice 6 : Modélisation UML & Collections (4pts)
+        prompt: `Exercice 6 : Modélisation UML & Collections Java (4 pts)
 
-==================================================
+ÉNONCÉ CONTEXTUEL :
+Classe Livre (isbn: String). On souhaite garantir l'unicité lors de l'ajout d'un livre.
+
+--------------------------------------------------
 QUESTION 2 :
-Implémentez la vérification d'unicité d'ISBN dans la méthode :
+Implémentez la vérification d'unicité d'ISBN dans la méthode Java :
 
-java
 public boolean ajouterLivre(Livre livre) {
     // À compléter (utilisez une collection appropriée)
 }`,
@@ -447,14 +470,17 @@ public boolean ajouterLivre(Livre livre) {
       },
       {
         id: "2025-info-ex6-q3",
-        title: "Exercice 6 : POO Java & Collections (3/3 Théorie)",
+        title: "Exercice 6 : POO Java & Collections (Question 3/3 : Legacy Vector)",
         type: "code_written",
         difficulty: "Facile",
-        prompt: `Exercice 6 : Modélisation UML & Collections (4pts)
+        prompt: `Exercice 6 : Modélisation UML & Collections Java (4 pts)
 
-==================================================
+ÉNONCÉ CONTEXTUEL :
+Collections Java modernes vs Legacy.
+
+--------------------------------------------------
 QUESTION 3 :
-Pourquoi ne doit-on pas utiliser java.util.Vector dans une application moderne ?`,
+Pourquoi ne doit-on pas utiliser java.util.Vector dans une application Java moderne ?`,
         explanation: `java.util.Vector est une classe legacy synchronisée systématiquement sur chaque méthode, entraînant une perte de performance importante en mono-thread par rapport à ArrayList.`,
         hint: "Vector est synchronisé par défaut sur chaque méthode."
       }
