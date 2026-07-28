@@ -349,8 +349,8 @@ CREATE TABLE SINISTRE (
 
       // EXERCICE 5 : PHP - PDO & SÉCURITÉ (ÉNONCÉ DU SUJET ET QUESTION PAR ÉCRAN)
       {
-        id: "2025-info-ex5-q1a",
-        title: "Exercice 5 : PHP - PDO & Sécurité (Question 1.a : Connexion PDO)",
+        id: "2025-info-ex5-q1",
+        title: "Exercice 5 : PHP - PDO & Sécurité (Question 1/2 : Connexion & Requête Préparée)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
@@ -359,39 +359,25 @@ CREATE TABLE SINISTRE (
 Dans le cadre du développement de la plateforme ESATIC-Services, vous devez sécuriser l'accès aux données des utilisateurs enregistrés dans une base de données MySQL ('esatic').
 
 --------------------------------------------------
-QUESTION 1.a :
-Établissez une connexion PDO sécurisée à la base de données avec gestion d'erreurs d'exception (Try/Catch).`,
+QUESTION 1 :
+a) Établissez une connexion PDO sécurisée à la base de données avec gestion d'erreurs d'exception (Try/Catch).
+b) Implémentez une requête préparée sécurisée contre les injections SQL pour vérifier les identifiants de l'utilisateur.`,
         explanation: `try {
     $pdo = new PDO('mysql:host=localhost;dbname=esatic', 'user', 'pass', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
+    
+    $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE login = :login");
+    $stmt->execute([':login' => $login]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($user && password_verify($password, $user['password_hash'])) {
+        echo "Connexion réussie !";
+    }
 } catch (PDOException $e) {
     die("Erreur DB : " . $e->getMessage());
 }`,
-        hint: "Utilisez new PDO() dans un bloc try/catch et configurez PDO::ATTR_ERRMODE."
-      },
-      {
-        id: "2025-info-ex5-q1b",
-        title: "Exercice 5 : PHP - PDO & Sécurité (Question 1.b : Requête Préparée)",
-        type: "code_written",
-        difficulty: "Moyen",
-        prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
-
-ÉNONCÉ :
-Plateforme ESATIC-Services - Connexion à la base MySQL via $pdo.
-L'utilisateur saisit son login ($login) et son mot de passe ($password).
-
---------------------------------------------------
-QUESTION 1.b :
-Implémentez une requête préparée sécurisée contre les injections SQL pour vérifier les identifiants de l'utilisateur.`,
-        explanation: `$stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE login = :login");
-$stmt->execute([':login' => $login]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if ($user && password_verify($password, $user['password_hash'])) {
-    echo "Connexion réussie !";
-}`,
-        hint: "$pdo->prepare() puis $stmt->execute([':login' => $login])."
+        hint: "PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION et $pdo->prepare()."
       },
       {
         id: "2025-info-ex5-q2",
