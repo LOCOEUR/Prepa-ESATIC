@@ -5,7 +5,7 @@ import {
   Lightbulb, ChevronRight, Clock, Sparkles, Send, ShieldCheck, Image as ImageIcon, Maximize2, X, FileText
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import MathText from './MathText';
+import { evaluateMathAnswer } from '../utils/mathDiagnostic';
 
 export default function QuizSession({ questions, sessionTitle, onBack }) {
   const { progress, markQuestionResult } = useRevision();
@@ -61,59 +61,15 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
     e.preventDefault();
     if (!writtenAnswer.trim() || feedback) return;
 
-    const userInput = writtenAnswer.trim().toLowerCase();
-    const cleanUserInput = userInput.replace(/\s+/g, '');
-    const explanationText = (currentQ.explanation || '').toLowerCase();
-    const cleanExplanation = explanationText.replace(/\s+/g, '');
-    const answerKey = (currentQ.correctAnswerKey || '').toLowerCase();
+    const diagResult = evaluateMathAnswer(writtenAnswer, currentQ);
 
-    let isCorrect = false;
+    markQuestionResult(currentQ.id, diagResult.isCorrect);
 
-    // 1. Explicit answer key matching if present
-    if (answerKey) {
-      const keys = answerKey.split(/,|\n/).map(k => k.trim().toLowerCase().replace(/\s+/g, '')).filter(Boolean);
-      if (keys.some(k => cleanUserInput.includes(k) || (k.length >= 3 && cleanUserInput.includes(k)))) {
-        isCorrect = true;
-      }
-    }
-
-    // 2. Direct string inclusion check in solution (e.g. "(x+3)^4")
-    if (!isCorrect && cleanUserInput.length >= 3 && cleanExplanation.includes(cleanUserInput)) {
-      isCorrect = true;
-    }
-
-    // 3. Meaningful keyword matching from the solution
-    if (!isCorrect) {
-      const stopWords = new Set([
-        'avec', 'dans', 'pour', 'cette', 'sont', 'toutes', 'ainsi', 'donc', 'soit', 'tout', 'tous',
-        'alors', 'nous', 'vous', 'par', 'sur', 'qui', 'que', 'les', 'des', 'une', 'un', 'est'
-      ]);
-
-      const wordsInSolution = Array.from(new Set(
-        explanationText
-          .split(/[\s,();:\n\t=+\-*\/\\^$]+/)
-          .filter(w => w.length >= 2 && !stopWords.has(w))
-      ));
-
-      const matchedWords = wordsInSolution.filter(w => userInput.includes(w));
-      // Must match at least 1 significant term or keyword from the specific question's solution
-      isCorrect = matchedWords.length >= 1;
-    }
-
-    markQuestionResult(currentQ.id, isCorrect);
-
-    if (isCorrect) {
+    if (diagResult.isCorrect) {
       confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 } });
-      setFeedback({
-        isCorrect: true,
-        message: "Bravo ! Réponse correcte."
-      });
-    } else {
-      setFeedback({
-        isCorrect: false,
-        message: "Réponse enregistrée. Comparez votre démarche avec la correction :"
-      });
     }
+
+    setFeedback(diagResult);
   };
 
   const handleNext = () => {
@@ -326,24 +282,41 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
         {feedback && (
           <div className="space-y-4 pt-4 border-t border-white/10 animate-fade-in">
             <div className={`p-4 rounded-xl border text-sm flex items-start gap-3 ${
-              feedback.isCorrect ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200' :
+              feedback.status === 'correct' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200' :
+              feedback.status === 'partial' ? 'bg-amber-500/10 border-amber-500/30 text-amber-200' :
               'bg-rose-500/10 border-rose-500/30 text-rose-200'
             }`}>
-              {feedback.isCorrect ? (
+              {feedback.status === 'correct' ? (
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              ) : feedback.status === 'partial' ? (
+                <Lightbulb className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
               ) : (
                 <XCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
               )}
-              <div>
-                <p className="font-bold text-base">{feedback.message}</p>
+              <div className="space-y-1.5 w-full">
+                <p className="font-bold text-base">{feedback.title || (feedback.isCorrect ? "Bravo !" : "Correction :")}</p>
+                {feedback.analysis && (
+                  <div className="text-sm opacity-90">
+                    <MathText text={feedback.analysis} />
+                  </div>
+                )}
+                {feedback.details && feedback.details.length > 0 && (
+                  <div className="mt-2 space-y-1 text-xs opacity-90">
+                    {feedback.details.map((detail, idx) => (
+                      <div key={idx}>
+                        <MathText text={detail} />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* ONLY DISPLAY EXPLANATION IF WRONG */}
-            {!feedback.isCorrect && (
+            {/* DISPLAY EXPLANATION IF PARTIAL OR WRONG */}
+            {feedback.status !== 'correct' && currentQ.explanation && (
               <div className="bg-purple-950/30 border border-purple-500/30 rounded-xl p-5 space-y-3">
                 <h4 className="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-purple-400" /> Explication de l'erreur & Correction :
+                  <Sparkles className="w-4 h-4 text-purple-400" /> Démarche & Correction de référence :
                 </h4>
                 <div className="text-xs text-gray-200 prompt-text prompt-box-dark leading-relaxed">
                   <MathText text={currentQ.explanation} />
