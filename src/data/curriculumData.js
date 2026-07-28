@@ -89,7 +89,7 @@ def parcours_bfs(graph, start, forbidden):
         hint: "Utilisez collections.deque() pour popleft() en O(1) et set(forbidden)."
       },
 
-      // EXERCICE 3
+      // EXERCICE 3 : ADRESSAGE IP (CONTEXTE INCLUS DANS CHAQUE QUESTION)
       {
         id: "2025-info-ex3-q1",
         title: "Exercice 3 : Adressage IP (Question 1/5)",
@@ -97,13 +97,11 @@ def parcours_bfs(graph, start, forbidden):
         difficulty: "Moyen",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-Contexte :
+ÉNONCÉ CONTEXTUEL :
 ESATIC-Services exploite deux sites (Abidjan et Yamoussoukro) interconnectés par VPN.
 • Bloc IPv4 attribué : 172.30.0.0/20
 • Bloc IPv6 attribué : 2001:db8:bf::/48
-
-Site d'Abidjan :
-  • Département IT : 90 postes + 10 serveurs = 100 machines.
+• Site d'Abidjan - Département IT : 90 postes + 10 serveurs = 100 machines.
 
 --------------------------------------------------
 QUESTION 1 :
@@ -124,9 +122,9 @@ Pour le LAN IT (100 machines), quel masque IPv4 minimise le gaspillage tout en g
         difficulty: "Facile",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-Contexte :
+ÉNONCÉ CONTEXTUEL :
 ESATIC-Services - Site d'Abidjan (Département Finance : 40 postes).
-Réseau Finance : 172.30.6.64/26.
+• Réseau Finance attribué : 172.30.6.64/26.
 
 --------------------------------------------------
 QUESTION 2 :
@@ -147,6 +145,10 @@ Quelle est l'adresse de diffusion du sous-réseau 172.30.6.64/26 (réseau Financ
         difficulty: "Facile",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
+ÉNONCÉ CONTEXTUEL :
+ESATIC-Services - Plan d'adressage IPv4.
+
+--------------------------------------------------
 QUESTION 3 :
 Combien d'adresses utilisables contient un bloc /26 ?`,
         options: [
@@ -165,11 +167,12 @@ Combien d'adresses utilisables contient un bloc /26 ?`,
         difficulty: "Moyen",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-Contexte IPv6 :
+ÉNONCÉ CONTEXTUEL IPv6 :
 • Bloc IPv6 attribué : 2001:db8:bf::/48
 • Règle entreprise : « l'ID-Sous-réseau est égal au numéro de VLAN »
 • Réseau Wi-Fi Visiteurs : VLAN 30
 
+--------------------------------------------------
 QUESTION 4 :
 Quel préfixe IPv6 /64 conviendrait au réseau Wi-Fi Visiteurs ?`,
         options: [
@@ -188,6 +191,10 @@ Quel préfixe IPv6 /64 conviendrait au réseau Wi-Fi Visiteurs ?`,
         difficulty: "Moyen",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
+ÉNONCÉ CONTEXTUEL IPv6 :
+Autoconfiguration IPv6 sur les commutateurs et hôtes ESATIC-Services.
+
+--------------------------------------------------
 QUESTION 5 :
 Que se passe-t-il si aucun Router Advertisement (RA) n'est émis dans un réseau IPv6 ?`,
         options: [
@@ -200,7 +207,7 @@ Que se passe-t-il si aucun Router Advertisement (RA) n'est émis dans un réseau
         hint: "SLAAC nécessite les messages RA."
       },
 
-      // EXERCICE 4 : ASSURANCE AUTO (SÉPARATION DES ENTITÉS ET MCD)
+      // EXERCICE 4 : ASSURANCE AUTO (ÉNONCÉ INCLUS DANS CHAQUE QUESTION)
       {
         id: "2025-info-ex4-q1a",
         title: "Exercice 4 : Assurance Auto (1.a : Identification des Entités)",
@@ -217,7 +224,7 @@ Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de
 • En cas d'incident, le client déclare un sinistre, lié à un contrat et à un véhicule.
 • Chaque sinistre donne lieu à un suivi de traitement (état : en cours, traité, refusé) et une évaluation du montant pris en charge.
 
-==================================================
+--------------------------------------------------
 TRAVAIL À FAIRE (Question 1.a) :
 Identifiez les différentes entités avec leurs propriétés respectives.`,
         explanation: `ENTITÉS ET LEURS PROPRIÉTÉS RESPECTIVES :
@@ -236,10 +243,16 @@ Identifiez les différentes entités avec leurs propriétés respectives.`,
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-ÉNONCÉ CONTEXTUEL (Rappel Entités) :
-• Entités : CLIENT, VEHICULE, CONTRAT, GARANTIE, SINISTRE
+ÉNONCÉ CONTEXTUEL :
+Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients :
+• Un client peut souscrire plusieurs contrats auto ; un contrat est associé à un seul véhicule.
+• Un véhicule n'appartient qu'à un seul client à un moment donné.
+• Chaque contrat couvre une période donnée (date de début, date de fin).
+• La compagnie propose plusieurs types de garanties (vol, incendie, etc.). Un contrat peut inclure plusieurs garanties.
+• En cas d'incident, le client déclare un sinistre, lié à un contrat et à un véhicule.
+• Chaque sinistre donne lieu à un suivi de traitement (état : en cours, traité, refusé) et une évaluation du montant pris en charge.
 
-==================================================
+--------------------------------------------------
 TRAVAIL À FAIRE (Question 1.b) :
 Proposer le modèle entité-association (MCD) avec les associations et les cardinalités.`,
         explanation: `ASSOCIATIONS ET CARDINALITÉS DU MCD :
@@ -257,7 +270,16 @@ Proposer le modèle entité-association (MCD) avec les associations et les cardi
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-==================================================
+ÉNONCÉ CONTEXTUEL :
+Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients :
+• Un client peut souscrire plusieurs contrats auto ; un contrat est associé à un seul véhicule.
+• Un véhicule n'appartient qu'à un seul client à un moment donné.
+• Chaque contrat couvre une période donnée (date de début, date de fin).
+• La compagnie propose plusieurs types de garanties (vol, incendie, etc.). Un contrat peut inclure plusieurs garanties.
+• En cas d'incident, le client déclare un sinistre, lié à un contrat et à un véhicule.
+• Chaque sinistre donne lieu à un suivi de traitement (état : en cours, traité, refusé) et une évaluation du montant pris en charge.
+
+--------------------------------------------------
 TRAVAIL À FAIRE (Question 2) :
 Déduire le modèle relationnel associé (MLD).`,
         explanation: `MODÈLE RELATIONNEL (MLD) :
@@ -277,7 +299,10 @@ Déduire le modèle relationnel associé (MLD).`,
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-==================================================
+ÉNONCÉ CONTEXTUEL :
+Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients (CLIENT, VEHICULE, CONTRAT, GARANTIE, SINISTRE).
+
+--------------------------------------------------
 TRAVAIL À FAIRE (Question 3) :
 Donner les scripts SQL permettant de créer les tables issues du modèle relationnel en utilisant les contraintes nommées (CONSTRAINT pk_..., CONSTRAINT fk_..., CONSTRAINT chk_...).`,
         explanation: `SCRIPTS SQL DDL AVEC CONTRAINTES NOMMÉES :
