@@ -48,13 +48,16 @@ export default function QuizSession({ questions = [], sessionTitle, onBack }) {
     if (isCorrect) {
       confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
       setFeedback({
+        status: 'correct',
         isCorrect: true,
-        message: "Bravo !"
+        title: "Bravo ! Réponse exacte."
       });
     } else {
       setFeedback({
+        status: 'incorrect',
         isCorrect: false,
-        message: "❌ C'est faux."
+        title: "❌ Mauvaise réponse.",
+        analysis: "Examinez la correction ci-dessous :"
       });
     }
   };
