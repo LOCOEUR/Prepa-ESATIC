@@ -608,17 +608,21 @@ J = [ -3  1  0  0 ]
         difficulty: "Moyen",
         prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
-CONTEXTE & ÉNONCÉ :
-Soit n dans N*. On définit trois suites u_n, v_n et S_n par :
-u_n = sum_{k=1}^n 1/k ; v_n = sum_{k=1}^n k^2 et S_n = sum_{k=1}^n 1/v_k
+ÉNONCÉ :
+Soit $n \in \mathbb{N}^*$. On définit trois suites $(u_n)_{n \ge 1}$, $(v_n)_{n \ge 1}$ et $(S_n)_{n \ge 1}$ par :
+$$u_n = \sum_{k=1}^n \frac{1}{k} \quad ; \quad v_n = \sum_{k=1}^n k^2 \quad \text{et} \quad S_n = \sum_{k=1}^n \frac{1}{v_k}$$
 
 --------------------------------------------------
 QUESTION 1 :
-Calculer de deux façons différentes sum_{k=1}^n ((k+1)^3 - k^3).`,
-        explanation: `1ère façon (Télescopage) : sum_{k=1}^n ((k+1)^3 - k^3) = (n+1)^3 - 1^3 = (n+1)^3 - 1.
-2ème façon (Développement) : (k+1)^3 - k^3 = 3k^2 + 3k + 1.
-D'où sum = 3 sum(k^2) + 3 sum(k) + sum(1) = 3 v_n + 3 (n(n+1)/2) + n.`,
-        hint: "Identifiez le télescopage d'un côté et développez (k+1)^3 de l'autre."
+Calculer de deux façons différentes la somme :
+$$\sum_{k=1}^n \left((k+1)^3 - k^3\right)$$`,
+        explanation: `1ère façon (Télescopage) : 
+$$\sum_{k=1}^n \left((k+1)^3 - k^3\right) = (n+1)^3 - 1^3 = (n+1)^3 - 1$$
+
+2ème façon (Développement) : 
+$(k+1)^3 - k^3 = 3k^2 + 3k + 1$.
+D'où $\sum_{k=1}^n \left((k+1)^3 - k^3\right) = 3 \sum_{k=1}^n k^2 + 3 \sum_{k=1}^n k + \sum_{k=1}^n 1 = 3 v_n + 3 \frac{n(n+1)}{2} + n$.`,
+        hint: "Utilisez le télescopage d'un côté et développez $(k+1)^3$ de l'autre."
       },
       {
         id: "2025-math-ex2-q2",
@@ -627,21 +631,22 @@ D'où sum = 3 sum(k^2) + 3 sum(k) + sum(1) = 3 v_n + 3 (n(n+1)/2) + n.`,
         difficulty: "Moyen",
         prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
-CONTEXTE :
-u_n = sum 1/k, v_n = sum k^2, S_n = sum 1/v_k.
-sum_{k=1}^n ((k+1)^3 - k^3) = (n+1)^3 - 1 = 3 v_n + 3 n(n+1)/2 + n.
+ÉNONCÉ :
+Soit $n \in \mathbb{N}^*$. On rappelle la définition de $v_n = \sum_{k=1}^n k^2$ et l'égalité établie à la Question 1 :
+$$\sum_{k=1}^n \left((k+1)^3 - k^3\right) = (n+1)^3 - 1 = 3 v_n + 3 \frac{n(n+1)}{2} + n$$
 
 --------------------------------------------------
 QUESTION 2 :
-Montrer que pour tout n dans N*, v_n = n(n+1)(2n+1)/6.`,
-        explanation: `En égalant les deux expressions de Q1 :
-3 v_n = (n+1)^3 - 1 - 3n(n+1)/2 - n
-      = n^3 + 3n^2 + 3n - 3n(n+1)/2 - n
-      = n(2n^2 + 6n + 4 - 3n - 3)/2
-      = n(2n^2 + 3n + 1)/2
-      = n(n+1)(2n+1)/2
-D'où v_n = n(n+1)(2n+1)/6.`,
-        hint: "Isolez v_n dans 3 v_n = (n+1)^3 - 1 - 3n(n+1)/2 - n."
+Montrer que pour tout $n \in \mathbb{N}^*$ :
+$$v_n = \frac{n(n+1)(2n+1)}{6}$$`,
+        explanation: `En égalant les deux expressions de la Question 1 :
+$$3 v_n = (n+1)^3 - 1 - 3 \frac{n(n+1)}{2} - n$$
+$$= n^3 + 3n^2 + 3n - \frac{3n(n+1)}{2} - n$$
+$$= \frac{n(2n^2 + 6n + 4 - 3n - 3)}{2} = \frac{n(2n^2 + 3n + 1)}{2} = \frac{n(n+1)(2n+1)}{2}$$
+
+D'où :
+$$v_n = \frac{n(n+1)(2n+1)}{6}$$`,
+        hint: "Isolez $v_n$ dans l'équation : $3 v_n = (n+1)^3 - 1 - \frac{3n(n+1)}{2} - n$."
       },
       {
         id: "2025-math-ex2-q3",
@@ -650,16 +655,21 @@ D'où v_n = n(n+1)(2n+1)/6.`,
         difficulty: "Moyen",
         prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
+ÉNONCÉ :
+Soit $n \in \mathbb{N}^*$.
+
 --------------------------------------------------
 QUESTION 3 :
-Déterminer les réels a, b et c tels que :
-forall n dans N*, 1 / (n(n+1)(2n+1)) = a/n + b/(n+1) + c/(2n+1).`,
-        explanation: `Par réduction au même dénominateur ou identification aux pôles :
-• Pour n=0 : a = 1
-• Pour n=-1 : b = 1
-• Pour n=-1/2 : c = -4
-Vérification : 1/n + 1/(n+1) - 4/(2n+1) = (2n+1 + n)/(n(n+1)(2n+1)) - 4n(n+1) ... = 1/(n(n+1)(2n+1)).`,
-        hint: "Multipliez par n et posez n=0 pour trouver a, etc."
+Déterminer les réels $a$, $b$ et $c$ tels que pour tout $n \in \mathbb{N}^*$ :
+$$\frac{1}{n(n+1)(2n+1)} = \frac{a}{n} + \frac{b}{n+1} + \frac{c}{2n+1}$$`,
+        explanation: `Par identification ou méthodes des pôles (éléments simples) :
+• Pour $n \to 0$ (en multipliant par $n$) : $a = 1$
+• Pour $n \to -1$ (en multipliant par $n+1$) : $b = 1$
+• Pour $n \to -1/2$ (en multipliant par $2n+1$) : $c = -4$
+
+Vérification :
+$$\frac{1}{n} + \frac{1}{n+1} - \frac{4}{2n+1} = \frac{1}{n(n+1)(2n+1)}$$`,
+        hint: "Multipliez par $n$ puis faites $n \to 0$ pour trouver $a$, etc."
       },
       {
         id: "2025-math-ex2-q4",
@@ -668,18 +678,20 @@ Vérification : 1/n + 1/(n+1) - 4/(2n+1) = (2n+1 + n)/(n(n+1)(2n+1)) - 4n(n+1) .
         difficulty: "Moyen",
         prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
-CONTEXTE :
-u_n = sum_{k=1}^n 1/k.
+ÉNONCÉ :
+On rappelle que $u_n = \sum_{k=1}^n \frac{1}{k}$.
 
 --------------------------------------------------
 QUESTION 4 :
-Montrer que pour tout n dans N*, sum_{k=1}^n 1/(2k+1) = u_{2n+1} - 1/2 u_n - 1.`,
-        explanation: `sum_{k=1}^n 1/(2k+1) est la somme des termes impairs de 3 à 2n+1.
-Somme totale u_{2n+1} = 1 + sum_{impairs} 1/(2k+1) + sum_{pairs} 1/(2k).
-Or sum_{pairs} 1/(2k) = (1/2) sum_{k=1}^n 1/k = (1/2) u_n.
-D'où u_{2n+1} = 1 + sum_{k=1}^n 1/(2k+1) + (1/2) u_n
-=> sum_{k=1}^n 1/(2k+1) = u_{2n+1} - 1/2 u_n - 1.`,
-        hint: "Séparez la somme des nombres pairs et des nombres impairs."
+Montrer que pour tout $n \in \mathbb{N}^*$ :
+$$\sum_{k=1}^n \frac{1}{2k+1} = u_{2n+1} - \frac{1}{2} u_n - 1$$`,
+        explanation: `La somme des termes de la suite harmonique $u_{2n+1}$ s'écrit :
+$$u_{2n+1} = 1 + \sum_{k=1}^n \frac{1}{2k+1} + \sum_{k=1}^n \frac{1}{2k}$$
+
+Or $\sum_{k=1}^n \frac{1}{2k} = \frac{1}{2} \sum_{k=1}^n \frac{1}{k} = \frac{1}{2} u_n$.
+D'où :
+$$u_{2n+1} = 1 + \sum_{k=1}^n \frac{1}{2k+1} + \frac{1}{2} u_n \implies \sum_{k=1}^n \frac{1}{2k+1} = u_{2n+1} - \frac{1}{2} u_n - 1$$`,
+        hint: "Séparez la somme totale $u_{2n+1}$ en termes pairs ($\frac{1}{2k}$) et termes impairs ($\frac{1}{2k+1}$)."
       },
       {
         id: "2025-math-ex2-q5",
@@ -688,17 +700,17 @@ D'où u_{2n+1} = 1 + sum_{k=1}^n 1/(2k+1) + (1/2) u_n
         difficulty: "Difficile",
         prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
 
-CONTEXTE :
-v_k = k(k+1)(2k+1)/6, donc 1/v_k = 6 / (k(k+1)(2k+1)).
-1/(k(k+1)(2k+1)) = 1/k + 1/(k+1) - 4/(2k+1).
+ÉNONCÉ :
+On rappelle que $v_k = \frac{k(k+1)(2k+1)}{6}$, $\frac{1}{v_k} = \frac{6}{k(k+1)(2k+1)}$ et $S_n = \sum_{k=1}^n \frac{1}{v_k}$.
 
 --------------------------------------------------
 QUESTION 5 :
-Exprimer pour n dans N*, S_n = sum_{k=1}^n 1/v_k à l'aide de la suite u_n.`,
-        explanation: `S_n = 6 sum_{k=1}^n (1/k + 1/(k+1) - 4/(2k+1))
-    = 6 [ u_n + (u_{n+1} - 1) - 4 (u_{2n+1} - 1/2 u_n - 1) ]
-    = 6 [ 3 u_n + u_{n+1} - 4 u_{2n+1} + 3 ].`,
-        hint: "Injectez la décomposition de la Q3 et le résultat de la Q4."
+Exprimer pour tout $n \in \mathbb{N}^*$, $S_n = \sum_{k=1}^n \frac{1}{v_k}$ à l'aide de la suite $(u_n)$.`,
+        explanation: `En utilisant la décomposition de la Question 3 et la formule de la Question 4 :
+$$S_n = 6 \sum_{k=1}^n \left( \frac{1}{k} + \frac{1}{k+1} - \frac{4}{2k+1} \right)$$
+$$= 6 \left[ u_n + (u_{n+1} - 1) - 4 \left( u_{2n+1} - \frac{1}{2} u_n - 1 \right) \right]$$
+$$= 6 \left( 3 u_n + u_{n+1} - 4 u_{2n+1} + 3 \right)$$`,
+        hint: "Injectez la décomposition de la Question 3 et le résultat de la Question 4."
       },
 
       // ==========================================
