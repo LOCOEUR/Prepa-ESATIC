@@ -72,7 +72,7 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
     // 1. Explicit answer key matching if present
     if (answerKey) {
       const keys = answerKey.split(/,|\n/).map(k => k.trim().toLowerCase().replace(/\s+/g, '')).filter(Boolean);
-      if (keys.some(k => cleanUserInput.includes(k) || k.includes(cleanUserInput))) {
+      if (keys.some(k => cleanUserInput.includes(k) || (k.length >= 3 && cleanUserInput.includes(k)))) {
         isCorrect = true;
       }
     }
@@ -82,14 +82,22 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
       isCorrect = true;
     }
 
-    // 3. Keyword / length evaluation
+    // 3. Meaningful keyword matching from the solution
     if (!isCorrect) {
+      const stopWords = new Set([
+        'avec', 'dans', 'pour', 'cette', 'sont', 'toutes', 'ainsi', 'donc', 'soit', 'tout', 'tous',
+        'alors', 'nous', 'vous', 'par', 'sur', 'qui', 'que', 'les', 'des', 'une', 'un', 'est'
+      ]);
+
       const wordsInSolution = Array.from(new Set(
-        explanationText.split(/[\s,();:\n\t=+\-*\/\\^]+/).filter(w => w.length >= 3 && !['avec', 'dans', 'pour', 'cette', 'sont', 'toutes', 'ainsi', 'donc', 'soit'].includes(w))
+        explanationText
+          .split(/[\s,();:\n\t=+\-*\/\\^$]+/)
+          .filter(w => w.length >= 2 && !stopWords.has(w))
       ));
 
       const matchedWords = wordsInSolution.filter(w => userInput.includes(w));
-      isCorrect = (matchedWords.length >= 1 && cleanUserInput.length >= 4) || userInput.length >= 20;
+      // Must match at least 1 significant term or keyword from the specific question's solution
+      isCorrect = matchedWords.length >= 1;
     }
 
     markQuestionResult(currentQ.id, isCorrect);
