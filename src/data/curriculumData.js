@@ -515,7 +515,7 @@ P_A(X) = det(X I_2 - A_11) * det(X I_2 - A_22)
 • det(X I_2 - A_22) = (X+5)(X+1) + 4 = X^2 + 6X + 9 = (X+3)^2
 
 Ainsi, P_A(X) = (X + 3)^4.`,
-        hint: "Décomposez le déterminant de la matrice triangulaire par blocs."
+        hint: "Le polynôme caractéristique est donné par : P_A(X) = det(A - X · I_n). Pour une matrice triangulaire par blocs : P_A(X) = det(A_11 - X · I_2) · det(A_22 - X · I_2)."
       },
       {
         id: "2025-math-ex1-q2",
