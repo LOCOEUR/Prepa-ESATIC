@@ -881,17 +881,36 @@ Quel algorithme devez-vous impérativement utiliser pour trouver les plus courts
         hint: "Dijkstra échoue avec des arêtes de poids négatif."
       },
       {
-        id: "master-algo-ex3",
-        title: "Exercice 3 : Arbres & Structures de Données (B-Tree vs AVL)",
+        id: "master-algo-ex3-q1",
+        title: "Exercice 3 : Arbres & Index B-Tree (Question 1/2 : B-Tree vs AVL)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Niveau Master Info : Structures de Données Avancées
 
-1) Pourquoi les moteurs de bases de données (PostgreSQL, MySQL) utilisent-ils des B-Trees (ou B+Trees) plutôt que des arbres AVL pour leurs index ?
-2) Donner la hauteur maximale d'un arbre B-Tree d'ordre m contenant N clés.`,
-        explanation: `1) Les B-Trees ont un facteur de branchement très élevé (m grands), ce qui réduit drastiquement la hauteur de l'arbre et donc le nombre d'accès disque (I/O). Les arbres AVL, étant binaires, nécessitent beaucoup plus d'accès disque.
-2) Hauteur max H <= log_ceil(m/2) ((N + 1) / 2). Complexité des recherches en O(log N).`,
-        hint: "Pensez aux accès disque (I/O) et au facteur de branchement."
+CONTEXTE & ÉNONCÉ :
+On s'intéresse aux structures d'index dans les moteurs de bases de données relationnelles (PostgreSQL, MySQL).
+
+--------------------------------------------------
+QUESTION 1 :
+Pourquoi les moteurs de bases de données utilisent-ils des B-Trees (ou B+Trees) plutôt que des arbres équilibrés binaires (AVL) pour leurs index ?`,
+        explanation: `Les B-Trees ont un facteur de branchement très élevé (m grand), ce qui réduit la hauteur de l'arbre et minimise drastiquement le nombre d'accès disque (I/O). Les arbres AVL, étant binaires, nécessiteraient beaucoup plus d'accès disque.`,
+        hint: "Pensez aux accès disque (I/O) et au facteur de branchement m."
+      },
+      {
+        id: "master-algo-ex3-q2",
+        title: "Exercice 3 : Arbres & Index B-Tree (Question 2/2 : Hauteur max B-Tree)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `Niveau Master Info : Structures de Données Avancées
+
+CONTEXTE & ÉNONCÉ :
+Soit un arbre B-Tree d'ordre m contenant N clés enregistrées.
+
+--------------------------------------------------
+QUESTION 2 :
+Donner la formule de la hauteur maximale H d'un arbre B-Tree d'ordre m contenant N clés.`,
+        explanation: `Hauteur max H <= log_ceil(m/2) ((N + 1) / 2). La recherche reste en O(log N).`,
+        hint: "Formule en log base ceil(m/2)."
       }
     ]
   },
@@ -908,21 +927,38 @@ Quel algorithme devez-vous impérativement utiliser pour trouver les plus courts
     description: "Exercices type Master ESATIC : Normalisation (3NF, BCNF), Window Functions SQL (RANK, PARTITION BY), et Transactions ACID.",
     questions: [
       {
-        id: "master-bdd-ex1",
-        title: "Exercice 1 : Normalisation de Relational Schema (BCNF)",
+        id: "master-bdd-ex1-q1",
+        title: "Exercice 1 : Normalisation Relational Schema (Question 1/2 : Clés Candidates)",
         type: "code_written",
         difficulty: "Difficile",
         prompt: `Niveau Master Info : Théorie des Bases de Données
 
+CONTEXTE & ÉNONCÉ :
 Soit la relation R(A, B, C, D) et l'ensemble de dépendances fonctionnelles DF = { A -> B, BC -> D, D -> A }.
 
-1) Déterminer les clés candidates de la relation R.
-2) La relation R est-elle en 3NF ? En BCNF ? Justifier précisément.`,
-        explanation: `1) Clés candidates : (A, C), (D, C), et (B, C) car (BC)+ = BCAD = R.
-2) 
-   - 3NF : Oui, car pour chaque X -> Y, soit X est une sur-clé, soit Y est un attribut prime (appartient à une clé candidate).
-   - BCNF : Non ! Car D -> A est une DF valide mais D n'est pas une sur-clé (D+ = DA != R).`,
+--------------------------------------------------
+QUESTION 1 :
+Déterminer toutes les clés candidates de la relation R.`,
+        explanation: `Clés candidates : (A, C), (D, C), et (B, C) car (BC)+ = BCAD = R.`,
         hint: "Calculez la fermeture des attributs (A,C)+, (B,C)+, (D,C)+."
+      },
+      {
+        id: "master-bdd-ex1-q2",
+        title: "Exercice 1 : Normalisation Relational Schema (Question 2/2 : 3NF & BCNF)",
+        type: "code_written",
+        difficulty: "Difficile",
+        prompt: `Niveau Master Info : Théorie des Bases de Données
+
+CONTEXTE & ÉNONCÉ :
+Relation R(A, B, C, D) avec DF = { A -> B, BC -> D, D -> A }.
+(Rappel Q1 : Clés candidates (A,C), (D,C), (B,C))
+
+--------------------------------------------------
+QUESTION 2 :
+La relation R est-elle en 3NF ? En BCNF ? Justifier précisément.`,
+        explanation: `• 3NF : Oui, car pour chaque X -> Y, soit X est une sur-clé, soit Y est un attribut prime (A, B, C, D sont tous primes).
+• BCNF : Non ! Car D -> A est une DF valide mais D n'est pas une sur-clé (D+ = DA != R).`,
+        hint: "Vérifiez si le membre gauche de chaque DF est une sur-clé."
       },
       {
         id: "master-bdd-ex2",
@@ -1012,17 +1048,39 @@ Parmi les propositions suivantes sur BGP (Border Gateway Protocol), laquelle est
         hint: "BGP relie les Systèmes Autonomes (AS) sur Internet."
       },
       {
-        id: "master-telecom-ex3",
-        title: "Exercice 3 : Modulation Numérique 16-QAM",
-        type: "code_written",
+        id: "master-telecom-ex3-q1",
+        title: "Exercice 3 : Modulation 16-QAM (Question 1/2 : Valence)",
+        type: "short_answer",
+        difficulty: "Facile",
+        prompt: `Niveau Master Télécoms : Modulations Numériques
+
+CONTEXTE :
+On considère une modulation numérique de type 16-QAM (Quadrature Amplitude Modulation).
+
+--------------------------------------------------
+QUESTION 1 :
+Combien de bits par symbole (valence n) sont transportés par une modulation 16-QAM ?`,
+        correctAnswerKey: "4 bits par symbole (n = 4)",
+        explanation: "Valence M = 16 = 2^4. Chaque symbole transporte n = log2(16) = 4 bits.",
+        hint: "log2(16) = 4."
+      },
+      {
+        id: "master-telecom-ex3-q2",
+        title: "Exercice 3 : Modulation 16-QAM (Question 2/2 : Débit Binaire)",
+        type: "short_answer",
         difficulty: "Moyen",
         prompt: `Niveau Master Télécoms : Modulations Numériques
 
-1) Combien de bits par symbole (valence) sont transportés par une modulation 16-QAM ?
-2) Si le débit symbole (Rapidité de modulation R) est de 2 Mbaud (2 millions de symboles/sec), quel est le débit binaire D disponible ?`,
-        explanation: `1) Valence M = 16 = 2^4. Chaque symbole transporte n = log2(16) = 4 bits.
-2) Débit binaire D = R * n = 2 Mbaud * 4 bits/symbole = 8 Mbit/s.`,
-        hint: "M = 16 => n = log2(16) = 4 bits/symbole. D = R * log2(M)."
+CONTEXTE :
+Modulation 16-QAM (n = 4 bits par symbole).
+Rapidité de modulation R = 2 Mbaud (2 millions de symboles/sec).
+
+--------------------------------------------------
+QUESTION 2 :
+Quel est le débit binaire D disponible en Mbit/s ?`,
+        correctAnswerKey: "D = 8 Mbit/s",
+        explanation: "Débit binaire D = R * n = 2 Mbaud * 4 bits/symbole = 8 Mbit/s.",
+        hint: "D = R * n = 2 * 4 = 8 Mbit/s."
       }
     ]
   },
@@ -1039,30 +1097,48 @@ Parmi les propositions suivantes sur BGP (Border Gateway Protocol), laquelle est
     description: "Exercices type Master ESATIC : Diagonalisation de matrices, Chaines de Markov, et Estimation de Vraisemblance (Loi de Poisson).",
     questions: [
       {
-        id: "master-maths-ex1",
-        title: "Exercice 1 : Chaîne de Markov & Matrice de Transition",
+        id: "master-maths-ex1-q1",
+        title: "Exercice 1 : Chaîne de Markov (Question 1/2 : Matrice de Transition)",
         type: "code_written",
-        difficulty: "Difficile",
+        difficulty: "Moyen",
         prompt: `Niveau Master Mathématiques : Processus Stochastiques
 
+ÉNONCÉ DU PROBLÈME :
 Un serveur informatique peut être dans 2 états : E1 = "Fonctionnel", E2 = "En Panne".
 À chaque minute :
 • Si le serveur est Fonctionnel, il a 90% de chances de le rester et 10% de tomber en panne.
 • Si le serveur est En Panne, l'équipe de maintenance a 40% de chances de le réparer (retour à E1) et 60% qu'il reste en panne.
 
-1) Écrire la matrice de transition P de cette chaîne de Markov.
-2) Déterminer la distribution stationnaire π = (π1, π2) telle que π * P = π et π1 + π2 = 1.`,
-        explanation: `1) Matrice P :
-   P = [[0.90, 0.10],
-        [0.40, 0.60]]
+--------------------------------------------------
+QUESTION 1 :
+Écrire la matrice de transition P de cette chaîne de Markov.`,
+        explanation: `Matrice de transition P :
+P = [[0.90, 0.10],
+     [0.40, 0.60]]
+(Ligne 1: de E1 vers E1=0.90, E1 vers E2=0.10. Ligne 2: de E2 vers E1=0.40, E2 vers E2=0.60).`,
+        hint: "P[i][j] représente la probabilité de passer de l'état i à l'état j."
+      },
+      {
+        id: "master-maths-ex1-q2",
+        title: "Exercice 1 : Chaîne de Markov (Question 2/2 : Distribution Stationnaire)",
+        type: "code_written",
+        difficulty: "Difficile",
+        prompt: `Niveau Master Mathématiques : Processus Stochastiques
 
-2) Système π * P = π :
-   π1 = 0.90 π1 + 0.40 π2  =>  0.10 π1 = 0.40 π2  =>  π1 = 4 π2
-   Or π1 + π2 = 1  =>  4 π2 + π2 = 1  =>  5 π2 = 1  =>  π2 = 0.20 (20%)
-   Donc π1 = 0.80 (80%).
+ÉNONCÉ DU PROBLÈME :
+Serveur informatique : E1 = "Fonctionnel", E2 = "En Panne".
+Matrice de transition P = [[0.90, 0.10], [0.40, 0.60]].
+
+--------------------------------------------------
+QUESTION 2 :
+Déterminer la distribution stationnaire π = (π1, π2) telle que π * P = π et π1 + π2 = 1.`,
+        explanation: `Système π * P = π :
+π1 = 0.90 π1 + 0.40 π2  =>  0.10 π1 = 0.40 π2  =>  π1 = 4 π2.
+Or π1 + π2 = 1  =>  4 π2 + π2 = 1  =>  5 π2 = 1  =>  π2 = 0.20 (20%).
+Donc π1 = 0.80 (80%).
 
 Le serveur est donc fonctionnel à 80% du temps en régime permanent.`,
-        hint: "Résolvez le système 0.10*π1 = 0.40*π2 avec π1 + π2 = 1."
+        hint: "Isolez π1 en fonction de π2 avec 0.10 π1 = 0.40 π2 et π1 + π2 = 1."
       },
       {
         id: "master-maths-ex2",
