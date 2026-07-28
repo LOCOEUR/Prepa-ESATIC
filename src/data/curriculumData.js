@@ -580,7 +580,7 @@ $$J = \\begin{pmatrix} -3 & 1 & 0 & 0 \\\\ 0 & -3 & 0 & 0 \\\\ 0 & 0 & -3 & 1 \\
         prompt: `EXERCICE 2 : (5 points)
 
 Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
-$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} ; v_n = \\sum_{k=1}^n k^2 \\text{ et } S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
 1) Calculer de deux façon différentes $\\sum_{k=1}^n ((k + 1)^3 - k^3)$.`,
@@ -600,7 +600,7 @@ D'où $\\sum_{k=1}^n ((k+1)^3 - k^3) = 3 \\sum_{k=1}^n k^2 + 3 \\sum_{k=1}^n k +
         prompt: `EXERCICE 2 : (5 points)
 
 Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
-$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} ; v_n = \\sum_{k=1}^n k^2 \\text{ et } S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
 2) Montrer que $\\forall n \\in \\mathbb{N}^*, v_n = \\frac{n(n+1)(2n+1)}{6}$.`,
@@ -621,7 +621,7 @@ $$v_n = \\frac{n(n+1)(2n+1)}{6}$$`,
         prompt: `EXERCICE 2 : (5 points)
 
 Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
-$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} ; v_n = \\sum_{k=1}^n k^2 \\text{ et } S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
 3) Déterminer les réels $a, b$ et $c$ tels que
@@ -643,7 +643,7 @@ $$\\frac{1}{n} + \\frac{1}{n+1} - \\frac{4}{2n+1} = \\frac{1}{n(n+1)(2n+1)}$$`,
         prompt: `EXERCICE 2 : (5 points)
 
 Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
-$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} ; v_n = \\sum_{k=1}^n k^2 \\text{ et } S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
 4) Montrer que $\\forall n \\in \\mathbb{N}^*, \\sum_{k=1}^n \\frac{1}{2k+1} = u_{n+1} - \\frac{1}{2}u_n - 1$.`,
@@ -658,7 +658,7 @@ $$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\qua
         prompt: `EXERCICE 2 : (5 points)
 
 Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
-$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} ; v_n = \\sum_{k=1}^n k^2 \\text{ et } S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
 5) Exprimer pour $n \\in \\mathbb{N}^*, S_n$ à l'aide de la suite $u_n$.`,

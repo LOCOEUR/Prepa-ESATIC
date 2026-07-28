@@ -9,9 +9,7 @@ export default function MathText({ text, className = "" }) {
     return str
       .replace(/\x0Crac/g, '\\frac') // Fix JS form-feed \frac
       .replace(/\x0C/g, '\\f')
-      .replace(/\\rac/g, '\\frac')
-      .replace(/\text/g, '\\text')
-      .replace(/\quad/g, '\\quad');
+      .replace(/\\rac/g, '\\frac');
   };
 
   const renderFormattedText = (rawStr) => {
