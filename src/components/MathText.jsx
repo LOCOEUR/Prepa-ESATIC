@@ -5,7 +5,17 @@ import 'katex/dist/katex.min.css';
 export default function MathText({ text, className = "" }) {
   if (!text) return null;
 
-  const renderFormattedText = (str) => {
+  const sanitizeLatex = (str) => {
+    return str
+      .replace(/\x0Crac/g, '\\frac') // Fix JS form-feed \frac
+      .replace(/\x0C/g, '\\f')
+      .replace(/\\rac/g, '\\frac')
+      .replace(/\text/g, '\\text')
+      .replace(/\quad/g, '\\quad');
+  };
+
+  const renderFormattedText = (rawStr) => {
+    const str = sanitizeLatex(rawStr);
     const lines = str.split('\n');
 
     return lines.map((line, lineIdx) => {
