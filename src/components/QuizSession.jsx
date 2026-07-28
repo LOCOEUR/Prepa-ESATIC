@@ -61,22 +61,34 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
     if (!writtenAnswer.trim() || feedback) return;
 
     const userInput = writtenAnswer.trim().toLowerCase();
+    const cleanUserInput = userInput.replace(/\s+/g, '');
     const explanationText = (currentQ.explanation || '').toLowerCase();
+    const cleanExplanation = explanationText.replace(/\s+/g, '');
     const answerKey = (currentQ.correctAnswerKey || '').toLowerCase();
 
     let isCorrect = false;
 
-    if (currentQ.type === 'short_answer') {
-      const keyTerms = answerKey.split(/,|\n/).map(t => t.trim()).filter(Boolean);
-      const matches = keyTerms.filter(term => userInput.includes(term.toLowerCase()));
-      isCorrect = matches.length >= Math.max(1, Math.floor(keyTerms.length * 0.5));
-    } else {
+    // 1. Explicit answer key matching if present
+    if (answerKey) {
+      const keys = answerKey.split(/,|\n/).map(k => k.trim().toLowerCase().replace(/\s+/g, '')).filter(Boolean);
+      if (keys.some(k => cleanUserInput.includes(k) || k.includes(cleanUserInput))) {
+        isCorrect = true;
+      }
+    }
+
+    // 2. Direct string inclusion check in solution (e.g. "(x+3)^4")
+    if (!isCorrect && cleanUserInput.length >= 3 && cleanExplanation.includes(cleanUserInput)) {
+      isCorrect = true;
+    }
+
+    // 3. Keyword / length evaluation
+    if (!isCorrect) {
       const wordsInSolution = Array.from(new Set(
-        explanationText.split(/[\s,();:\n\t]+/).filter(w => w.length > 3 && !['avec', 'dans', 'pour', 'cette', 'sont', 'toutes'].includes(w))
+        explanationText.split(/[\s,();:\n\t=+\-*\/\\^]+/).filter(w => w.length >= 3 && !['avec', 'dans', 'pour', 'cette', 'sont', 'toutes', 'ainsi', 'donc', 'soit'].includes(w))
       ));
 
       const matchedWords = wordsInSolution.filter(w => userInput.includes(w));
-      isCorrect = userInput.length >= 10 && (matchedWords.length >= 2 || userInput.length >= 30);
+      isCorrect = (matchedWords.length >= 1 && cleanUserInput.length >= 4) || userInput.length >= 20;
     }
 
     markQuestionResult(currentQ.id, isCorrect);
@@ -85,12 +97,12 @@ export default function QuizSession({ questions, sessionTitle, onBack }) {
       confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 } });
       setFeedback({
         isCorrect: true,
-        message: "Bravo !"
+        message: "Bravo ! Réponse correcte."
       });
     } else {
       setFeedback({
         isCorrect: false,
-        message: "❌ C'est faux."
+        message: "Réponse enregistrée. Comparez votre démarche avec la correction :"
       });
     }
   };
