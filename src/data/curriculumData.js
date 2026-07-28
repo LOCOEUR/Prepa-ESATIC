@@ -670,155 +670,173 @@ $$= 6 \\left( 3 u_n - 3 u_{n+1} + 3 \\right)$$`,
       },
 
       // ==========================================
-      // EXERCICE 3 : NORMES C1 (4 Questions)
+      // EXERCICE 3 : (4 points)
       // ==========================================
       {
         id: "2025-math-ex3-q1",
-        title: "EXERCICE 3 : Normes C1 (Question 1/4 : Définition)",
+        title: "EXERCICE 3 : (4 points) (Question 1/4 : Définition de Norme)",
         type: "code_written",
         difficulty: "Facile",
-        prompt: `EXERCICE 3 : Normes C1 (4 points)
+        prompt: `EXERCICE 3 : (4 points)
 
-CONTEXTE :
-Soit E le R-espace vectoriel des applications f : [0; 1] -> R de classe C1 telles que f(0) = 0.
+On note $E$ le $\\mathbb{R}$-espace vectoriel des application $f : [0 ; 1] \\to \\mathbb{R}$ de classe $C^1$ telles que $f(0) = 0$. On note pour toute $f \\in E$ :
+$$N(f) = \\int_0^1 |f'| \\quad \\text{et} \\quad V(f) = \\int_0^1 |f' + f|$$
 
 --------------------------------------------------
-QUESTION 1 :
-Donner la définition d'une norme sur l'espace vectoriel E.`,
-        explanation: `Une norme sur E est une application N : E -> R+ vérifiant pour tout f, g dans E et tout λ dans R :
-1) Séparation : N(f) = 0 <=> f = 0.
-2) Homogénéité : N(λ f) = |λ| N(f).
-3) Inégalité triangulaire : N(f + g) <= N(f) + N(g).`,
+1) Donner la définition d'une norme sur $E$.`,
+        explanation: `Une norme sur $E$ est une application $N : E \\to \\mathbb{R}^+$ vérifiant pour tout $f, g \\in E$ et tout $\\lambda \\in \\mathbb{R}$ :
+1) Séparation : $N(f) = 0 \\iff f = 0$.
+2) Homogénéité : $N(\\lambda f) = |\\lambda| N(f)$.
+3) Inégalité triangulaire : $N(f + g) \\le N(f) + N(g)$.`,
         hint: "Énoncez les 3 axiomes : Séparation, Homogénéité, Inégalité triangulaire."
       },
       {
         id: "2025-math-ex3-q2",
-        title: "EXERCICE 3 : Normes C1 (Question 2/4 : Équation Différentielle)",
+        title: "EXERCICE 3 : (4 points) (Question 2/4 : Équation Différentielle)",
         type: "code_written",
         difficulty: "Facile",
-        prompt: `EXERCICE 3 : Normes C1 (4 points)
+        prompt: `EXERCICE 3 : (4 points)
 
-CONTEXTE :
-E = { f dans C1([0, 1], R) | f(0) = 0 }.
+On note $E$ le $\\mathbb{R}$-espace vectoriel des application $f : [0 ; 1] \\to \\mathbb{R}$ de classe $C^1$ telles que $f(0) = 0$. On note pour toute $f \\in E$ :
+$$N(f) = \\int_0^1 |f'| \\quad \\text{et} \\quad V(f) = \\int_0^1 |f' + f|$$
 
 --------------------------------------------------
-QUESTION 2 :
-Résoudre dans E l'équation différentielle f' + f = 0.`,
-        explanation: `Les solutions de f' + f = 0 sont les fonctions f(x) = C e^-x avec C dans R.
-Comme f appartient à E, on a f(0) = 0, d'où C e^0 = 0 => C = 0.
-La seule solution dans E est la fonction nulle f = 0.`,
-        hint: "Solutions générales C*e^(-x), puis utilisez la condition f(0) = 0."
+2) Résoudre dans $E$ l'équation différentielle $f' + f = 0$.`,
+        explanation: `Les solutions générales de $f' + f = 0$ sont de la forme $f(x) = C e^{-x}$ avec $C \\in \\mathbb{R}$.
+Comme $f \\in E$, $f(0) = 0 \\implies C e^0 = 0 \\implies C = 0$.
+La seule solution dans $E$ est la fonction nulle $f = 0$.`,
+        hint: "Solutions générales $C e^{-x}$, puis utilisez la condition $f(0) = 0$."
       },
       {
         id: "2025-math-ex3-q3",
-        title: "EXERCICE 3 : Normes C1 (Question 3/4 : Démonstration Normes)",
+        title: "EXERCICE 3 : (4 points) (Question 3/4 : Démonstration Normes)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 3 : Normes C1 (4 points)
+        prompt: `EXERCICE 3 : (4 points)
 
-CONTEXTE :
-Pour tout f dans E (avec f(0) = 0) :
-N(f) = integral_0^1 |f'|  et  V(f) = integral_0^1 |f' + f|
+On note $E$ le $\\mathbb{R}$-espace vectoriel des application $f : [0 ; 1] \\to \\mathbb{R}$ de classe $C^1$ telles que $f(0) = 0$. On note pour toute $f \\in E$ :
+$$N(f) = \\int_0^1 |f'| \\quad \\text{et} \\quad V(f) = \\int_0^1 |f' + f|$$
 
 --------------------------------------------------
-QUESTION 3 :
-Montrer que N et V sont des normes sur E.`,
-        explanation: `Pour N(f) :
-• Homogénéité et Inégalité triangulaire découlent de la linéarité et de la valeur absolue sur l'intégrale.
-• Séparation : N(f) = 0 => integral |f'| = 0 => f' = 0 (car f' est continue) => f est constante. Comme f(0) = 0, f = 0.
+3) Montrer que $N$ et $V$ sont des normes sur $E$.`,
+        explanation: `Pour $N(f)$ :
+• Homogénéité et Inégalité triangulaire découlent de la valeur absolue et de la linéarité de l'intégrale.
+• Séparation : $N(f) = 0 \\implies \\int_0^1 |f'| = 0 \\implies f' = 0$ (car $f'$ est continue). Donc $f$ est constante, et $f(0) = 0 \\implies f = 0$.
 
-Pour V(f) :
-• Idem. Séparation : V(f) = 0 => integral |f' + f| = 0 => f' + f = 0 => f = 0 (d'après Q2).
-Ainsi N et V sont des normes sur E.`,
-        hint: "Pour la séparation de V, réutilisez le résultat de la Q2."
+Pour $V(f)$ :
+• Séparation : $V(f) = 0 \\implies \\int_0^1 |f' + f| = 0 \\implies f' + f = 0 \\implies f = 0$ (d'après Q2).
+Ainsi $N$ et $V$ sont des normes sur $E$.`,
+        hint: "Pour la séparation de $V$, réutilisez le résultat de la Question 2."
       },
       {
         id: "2025-math-ex3-q4",
-        title: "EXERCICE 3 : Normes C1 (Question 4/4 : Majoration)",
+        title: "EXERCICE 3 : (4 points) (Question 4/4 : Majoration)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 3 : Normes C1 (4 points)
+        prompt: `EXERCICE 3 : (4 points)
+
+On note $E$ le $\\mathbb{R}$-espace vectoriel des application $f : [0 ; 1] \\to \\mathbb{R}$ de classe $C^1$ telles que $f(0) = 0$. On note pour toute $f \\in E$ :
+$$N(f) = \\int_0^1 |f'| \\quad \\text{et} \\quad V(f) = \\int_0^1 |f' + f|$$
 
 --------------------------------------------------
-QUESTION 4 :
-Montrer que pour toute f dans E, V(f) <= 2 N(f).`,
-        explanation: `Pour x dans [0, 1], f(x) = f(0) + integral_0^x f'(t) dt = integral_0^x f'(t) dt.
-Donc |f(x)| <= integral_0^x |f'(t)| dt <= integral_0^1 |f'(t)| dt = N(f).
-Alors V(f) = integral_0^1 |f' + f| <= integral_0^1 |f'| + integral_0^1 |f| <= N(f) + N(f) = 2 N(f).`,
-        hint: "Majorez |f(x)| par N(f) en intégrant f'."
+4) Montrer que pour toute $f \\in E : V(f) \\le 2 N(f)$.`,
+        explanation: `Pour tout $x \\in [0, 1]$, $f(x) = f(0) + \\int_0^x f'(t) dt = \\int_0^x f'(t) dt$.
+Donc $|f(x)| \\le \\int_0^x |f'(t)| dt \\le \\int_0^1 |f'(t)| dt = N(f)$.
+Alors $V(f) = \\int_0^1 |f' + f| \\le \\int_0^1 |f'| + \\int_0^1 |f| \\le N(f) + N(f) = 2 N(f)$.`,
+        hint: "Majorez $|f(x)|$ par $N(f)$ en intégrant $f'$."
       },
 
       // ==========================================
-      // EXERCICE 4 : HARMONIQUES DU SIGNAL (3 Questions)
+      // Exercice 4 : (4 points)
       // ==========================================
       {
         id: "2025-math-ex4-q1",
-        title: "EXERCICE 4 : Harmoniques du Signal (Question 1/3 : Fondamental)",
-        type: "short_answer",
+        title: "Exercice 4 : (4 points) (Question 1/4 : Fondamental)",
+        type: "code_written",
         difficulty: "Facile",
-        prompt: `EXERCICE 4 : Harmoniques du Signal (4 points)
+        prompt: `Exercice 4 : (4 points)
 
-CONTEXTE :
-e(t) = (4/π) A sum_{n=0}^{+infty} (1/(2n+1)) sin((2n+1) ω t)
-Signal rectangulaire de fréquence f = 4 kHz et d'amplitude A = 3 Volt.
+Un signal rectangulaire d'amplitude $A$ et de fréquence $f$ se décompose en une somme de fonctions sinusoïdales de la manière suivante :
+$$e(t) = \\frac{4}{\\pi} A \\sum_{n=0}^{+\\infty} \\frac{1}{2n+1} \\sin((2n + 1)\\omega t)$$
 
 --------------------------------------------------
-QUESTION 1 :
-Donner l'amplitude et la fréquence du FONDAMENTAL (rang n=0).`,
+1. Donner l'amplitude et la fréquence, du fondamental d'un signal rectangulaire, de fréquence 4 kHz et d'amplitude 3 volt.`,
         correctAnswerKey: "Fréquence: 4 kHz, Amplitude: 12/π Volt (~3.82 V)",
-        explanation: "Pour n=0 (Fondamental) : f0 = f = 4 kHz. Amplitude A0 = (4/π) * 3 = 12/π Volt ≈ 3.82 V.",
-        hint: "Prenez n=0 dans la formule d'onde."
+        explanation: "Pour $n=0$ (Fondamental) : $f_0 = f = 4\\text{ kHz}$. Amplitude $A_0 = \\frac{4}{\\pi} \\times 3 = \\frac{12}{\\pi}\\text{ Volt} \\approx 3.82\\text{ V}$.",
+        hint: "Prenez $n=0$ dans la formule du signal."
       },
       {
         id: "2025-math-ex4-q2",
-        title: "EXERCICE 4 : Harmoniques du Signal (Question 2/3 : 1er Harmonique)",
-        type: "short_answer",
+        title: "Exercice 4 : (4 points) (Question 2/4 : 1er Harmonique)",
+        type: "code_written",
         difficulty: "Facile",
-        prompt: `EXERCICE 4 : Harmoniques du Signal (4 points)
+        prompt: `Exercice 4 : (4 points)
 
-CONTEXTE :
-Signal rectangulaire f = 4 kHz, A = 3 V.
+Un signal rectangulaire d'amplitude $A$ et de fréquence $f$ se décompose en une somme de fonctions sinusoïdales de la manière suivante :
+$$e(t) = \\frac{4}{\\pi} A \\sum_{n=0}^{+\\infty} \\frac{1}{2n+1} \\sin((2n + 1)\\omega t)$$
 
 --------------------------------------------------
-QUESTION 2 :
-Donner l'amplitude et la fréquence du 1er harmonique non nul (n=1).`,
+2. Donner l'amplitude et la fréquence, du $1^{\\text{er}}$ harmonique.`,
         correctAnswerKey: "Fréquence: 12 kHz, Amplitude: 4/π Volt (~1.27 V)",
-        explanation: "Pour n=1 : f1 = 3 * f = 12 kHz. Amplitude A1 = (4/π * 3) / 3 = 4/π Volt ≈ 1.27 V.",
-        hint: "Prenez n=1 dans la somme (fréquence 3f)."
+        explanation: "Pour $n=1$ ($1^{\\text{er}}$ harmonique non nul) : $f_1 = 3 f = 12\\text{ kHz}$. Amplitude $A_1 = \\frac{4}{3\\pi} \\times 3 = \\frac{4}{\\pi}\\text{ Volt} \\approx 1.27\\text{ V}$.",
+        hint: "Prenez $n=1$ dans la formule (rang de fréquence $3f$)."
       },
       {
         id: "2025-math-ex4-q3",
-        title: "EXERCICE 4 : Harmoniques du Signal (Question 3/3 : 2ème Harmonique)",
-        type: "short_answer",
+        title: "Exercice 4 : (4 points) (Question 3/4 : 2ème Harmonique)",
+        type: "code_written",
         difficulty: "Facile",
-        prompt: `EXERCICE 4 : Harmoniques du Signal (4 points)
+        prompt: `Exercice 4 : (4 points)
+
+Un signal rectangulaire d'amplitude $A$ et de fréquence $f$ se décompose en une somme de fonctions sinusoïdales de la manière suivante :
+$$e(t) = \\frac{4}{\\pi} A \\sum_{n=0}^{+\\infty} \\frac{1}{2n+1} \\sin((2n + 1)\\omega t)$$
 
 --------------------------------------------------
-QUESTION 3 :
-Donner l'amplitude et la fréquence du 2ème harmonique non nul (n=2).`,
+3. Donner l'amplitude et la fréquence, du $2^{\\text{ème}}$ harmonique.`,
         correctAnswerKey: "Fréquence: 20 kHz, Amplitude: 12/(5π) Volt (~0.76 V)",
-        explanation: "Pour n=2 : f2 = 5 * f = 20 kHz. Amplitude A2 = (4/π * 3) / 5 = 12/(5π) Volt ≈ 0.76 V.",
-        hint: "Prenez n=2 dans la somme (fréquence 5f)."
+        explanation: "Pour $n=2$ ($2^{\\text{ème}}$ harmonique non nul) : $f_2 = 5 f = 20\\text{ kHz}$. Amplitude $A_2 = \\frac{4}{5\\pi} \\times 3 = \\frac{12}{5\\pi}\\text{ Volt} \\approx 0.76\\text{ V}$.",
+        hint: "Prenez $n=2$ dans la formule (rang de fréquence $5f$)."
+      },
+      {
+        id: "2025-math-ex4-q4",
+        title: "Exercice 4 : (4 points) (Question 4/4 : Représentation Graphique)",
+        type: "code_written",
+        difficulty: "Moyen",
+        prompt: `Exercice 4 : (4 points)
+
+Un signal rectangulaire d'amplitude $A$ et de fréquence $f$ se décompose en une somme de fonctions sinusoïdales de la manière suivante :
+$$e(t) = \\frac{4}{\\pi} A \\sum_{n=0}^{+\\infty} \\frac{1}{2n+1} \\sin((2n + 1)\\omega t)$$
+
+--------------------------------------------------
+4. Représenter sur un graphe, les différents harmoniques plus le fondamental, on placera en abscisse les fréquences et en ordonnée les amplitudes.`,
+        explanation: `Tracé du spectre d'amplitude :
+• En abscisse (Fréquence en kHz) : 4 (Fondamental), 12 (1er harmonique), 20 (2ème harmonique).
+• En ordonnée (Amplitude en Volts) :
+  - À $f = 4\\text{ kHz}$ : raie de hauteur $\\frac{12}{\\pi} \\approx 3.82\\text{ V}$
+  - À $f = 12\\text{ kHz}$ : raie de hauteur $\\frac{4}{\\pi} \\approx 1.27\\text{ V}$
+  - À $f = 20\\text{ kHz}$ : raie de hauteur $\\frac{12}{5\\pi} \\approx 0.76\\text{ V}$`,
+        hint: "Tracez un spectre de raies en bâtonnets avec la fréquence en abscisse et l'amplitude en ordonnée."
       },
 
       // ==========================================
-      // EXERCICE 5 : BERNOULLI EMV (1 Question)
+      // EXERCICE 5 : (2 points)
       // ==========================================
       {
         id: "2025-math-ex5",
-        title: "EXERCICE 5 : Bernoulli EMV (2 pts)",
-        type: "short_answer",
+        title: "EXERCICE 5 : (2 points) (EMV Bernoulli)",
+        type: "code_written",
         difficulty: "Facile",
-        prompt: `EXERCICE 5 : Estimateur du Maximum de Vraisemblance (2 points)
+        prompt: `EXERCICE 5 : (2 points)
 
-On considère un échantillon (X1, X2, ..., Xn) issu d'une loi de Bernoulli de paramètre θ, avec θ dans ]0, 1[.
-
---------------------------------------------------
-QUESTION :
-Déterminer l'estimateur du maximum de vraisemblance θ_EMV de θ.`,
+On considère un échantillon $(X_1, X_2, \\dots, X_n)$ issu d'une loi de Bernoulli de paramètre $\\theta$, avec $\\theta \\in ]0, 1[$. Déterminer l'estimateur du maximum de vraisemblance de $\\theta$.`,
         correctAnswerKey: "θ_EMV = (1/n) * sum Xi = X_barre",
-        explanation: "L(θ) = θ^(sum Xi) * (1-θ)^(n - sum Xi). La dérivée du log rend θ = (1/n) sum Xi = X_barre.",
-        hint: "La réponse est la moyenne empirique X_barre."
+        explanation: `La fonction de vraisemblance s'écrit :
+$$L(\\theta) = \\prod_{i=1}^n \\theta^{X_i} (1-\\theta)^{1-X_i} = \\theta^{\\sum X_i} (1-\\theta)^{n - \\sum X_i}$$
+
+La log-vraisemblance $\\ln L(\\theta) = (\\sum X_i) \\ln \\theta + (n - \\sum X_i) \\ln(1-\\theta)$.
+En dérivant par rapport à $\\theta$ et en annulant :
+$$\\frac{\\partial \\ln L}{\\partial \\theta} = \\frac{\\sum X_i}{\\theta} - \\frac{n - \\sum X_i}{1-\\theta} = 0 \\implies \\hat{\\theta}_{EMV} = \\frac{1}{n} \\sum_{i=1}^n X_i = \\bar{X}$$`,
+        hint: "La réponse est la moyenne empirique $\\bar{X} = \\frac{1}{n} \\sum X_i$."
       }
     ]
   },
