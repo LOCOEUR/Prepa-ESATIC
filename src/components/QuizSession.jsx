@@ -7,12 +7,14 @@ import {
 import confetti from 'canvas-confetti';
 import { evaluateMathAnswer } from '../utils/mathDiagnostic';
 
-export default function QuizSession({ questions, sessionTitle, onBack }) {
+export default function QuizSession({ questions = [], sessionTitle, onBack }) {
   const { progress, markQuestionResult } = useRevision();
 
-  // Lock session questions upon mounting
+  // Lock session questions upon mounting (fallback to all questions if 100% mastered)
   const [sessionQuestions] = useState(() => {
-    return questions.filter(q => !progress[q.id]?.mastered);
+    const list = Array.isArray(questions) ? questions : [];
+    const unmastered = list.filter(q => !progress[q.id]?.mastered);
+    return unmastered.length > 0 ? unmastered : list;
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);

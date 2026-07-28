@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRevision } from '../context/RevisionContext';
-import { 
-  Calculator, Network, Wifi, Database, Code2, Layers, 
-  CheckCircle2, ArrowRight, Award, Zap, UserCheck, Star 
+import {
+  Calculator, Network, Wifi, Database, Code2, Layers,
+  CheckCircle2, ArrowRight, Award, Zap, UserCheck, Star
 } from 'lucide-react';
 
 const iconMap = {
@@ -24,7 +24,7 @@ export default function Dashboard({ onSelectModule, startMasteryDrill, selectedT
   });
 
   const unmasteredQuestions = getUnmasteredQuestions();
-  
+
   // Count questions that were attempted at least once but missed
   const failedCount = unmasteredQuestions.filter(q => (progress[q.id]?.attempts || 0) > 0).length;
 
@@ -37,11 +37,11 @@ export default function Dashboard({ onSelectModule, startMasteryDrill, selectedT
 
   return (
     <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-10">
-      
+
       {/* Hero Header */}
       <div className="glass-card p-8 relative overflow-hidden border-purple-500/20">
         <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-gradient-to-br from-purple-600/20 to-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
@@ -58,7 +58,7 @@ export default function Dashboard({ onSelectModule, startMasteryDrill, selectedT
               {masteredCount} <span className="text-gray-500 text-xl font-normal">/ {totalQuestions}</span>
             </div>
             <div className="text-xs text-gray-400 font-medium">Exercices 100% maîtrisés</div>
-            
+
             <button
               onClick={startMasteryDrill}
               disabled={unmasteredQuestions.length === 0}
@@ -85,20 +85,19 @@ export default function Dashboard({ onSelectModule, startMasteryDrill, selectedT
             const IconComponent = iconMap[mod.icon] || Calculator;
             const moduleQuestions = mod.questions || [];
             const moduleMastered = moduleQuestions.filter(q => progress[q.id]?.mastered).length;
-            const modPercentage = moduleQuestions.length > 0 
-              ? Math.round((moduleMastered / moduleQuestions.length) * 100) 
+            const modPercentage = moduleQuestions.length > 0
+              ? Math.round((moduleMastered / moduleQuestions.length) * 100)
               : 0;
 
             const isFullyMastered = modPercentage === 100 && moduleQuestions.length > 0;
             const isOfficial2025 = mod.id.includes('session-2025');
 
             return (
-              <div 
+              <div
                 key={mod.id}
                 onClick={() => onSelectModule(mod)}
-                className={`glass-card glass-card-interactive p-6 flex flex-col justify-between space-y-6 cursor-pointer relative overflow-hidden group ${
-                  isOfficial2025 ? 'border-amber-500/50 bg-purple-950/20 shadow-purple-500/10' : ''
-                } ${isFullyMastered ? 'border-emerald-500/40 bg-emerald-950/10' : ''}`}
+                className={`glass-card glass-card-interactive p-6 flex flex-col justify-between space-y-6 cursor-pointer relative overflow-hidden group ${isOfficial2025 ? 'border-amber-500/50 bg-purple-950/20 shadow-purple-500/10' : ''
+                  } ${isFullyMastered ? 'border-emerald-500/40 bg-emerald-950/10' : ''}`}
               >
                 {/* Decorative Top Gradient Line */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${mod.color}`} />
@@ -160,7 +159,7 @@ export default function Dashboard({ onSelectModule, startMasteryDrill, selectedT
                   </div>
 
                   <div className="card-progress-bar-bg">
-                    <div 
+                    <div
                       className="card-progress-bar-fill"
                       style={{ width: `${modPercentage}%` }}
                     />
