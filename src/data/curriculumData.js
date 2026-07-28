@@ -489,156 +489,121 @@ Pourquoi ne doit-on pas utiliser java.util.Vector dans une application Java mode
     description: "Sujet officiel mot à mot (Durée: 2h00). Ce sujet comporte 05 exercices en 02 pages. Aucun document n'est autorisé.",
     questions: [
       // ==========================================
-      // EXERCICE 1 : MATRICE & JORDAN (4 Questions)
+      // EXERCICE 1 : (5 points)
       // ==========================================
       {
         id: "2025-math-ex1-q1",
-        title: "EXERCICE 1 : Matrice & Jordan (Question 1/4 : Polynôme Caractéristique)",
+        title: "EXERCICE 1 : (5 points) (Question 1/4 : Polynôme Caractéristique)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
+        prompt: `EXERCICE 1 : (5 points)
 
-CONTEXTE & ÉNONCÉ :
-Soit A la matrice de M4(R) suivante :
-[-2  -1   1   2]
-[ 1  -4   1   2]
-[ 0   0  -5   4]
-[ 0   0  -1  -1]
+Soit $A$ la matrice de $\\mathcal{M}_4(\\mathbb{R})$ suivante :
+$$A = \\begin{pmatrix} -2 & -1 & 1 & 2 \\\\ 1 & -4 & 1 & 2 \\\\ 0 & 0 & -5 & 4 \\\\ 0 & 0 & -1 & -1 \\end{pmatrix}$$
 
 --------------------------------------------------
-QUESTION 1 :
-Déterminer le polynôme caractéristique P_A(X) de la matrice A.`,
-        explanation: `La matrice A est triangulaire supérieure par blocs.
-P_A(X) = det(X I_2 - A_11) * det(X I_2 - A_22)
+1) Déterminer le polynôme caractéristique de $A$.`,
+        explanation: `La matrice $A$ est triangulaire supérieure par blocs.
+$$P_A(X) = \\det(X I_2 - A_{11}) \\times \\det(X I_2 - A_{22})$$
 
-• det(X I_2 - A_11) = (X+2)(X+4) + 1 = X^2 + 6X + 9 = (X+3)^2
-• det(X I_2 - A_22) = (X+5)(X+1) + 4 = X^2 + 6X + 9 = (X+3)^2
+• $\\det(X I_2 - A_{11}) = (X+2)(X+4) + 1 = X^2 + 6X + 9 = (X+3)^2$
+• $\\det(X I_2 - A_{22}) = (X+5)(X+1) + 4 = X^2 + 6X + 9 = (X+3)^2$
 
-Ainsi, P_A(X) = (X + 3)^4.`,
-        hint: "Le polynôme caractéristique est donné par : P_A(X) = det(A - X · I_n). Pour une matrice triangulaire par blocs : P_A(X) = det(A_11 - X · I_2) · det(A_22 - X · I_2)."
+Ainsi, $P_A(X) = (X + 3)^4$.`,
+        hint: "Le polynôme caractéristique est donné par : $P_A(X) = \\det(A - X \\cdot I_n) = (X + 3)^4$."
       },
       {
         id: "2025-math-ex1-q2",
-        title: "EXERCICE 1 : Matrice & Jordan (Question 2/4 : Valeurs Propres)",
+        title: "EXERCICE 1 : (5 points) (Question 2/4 : Valeurs Propres)",
         type: "short_answer",
         difficulty: "Facile",
-        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
+        prompt: `EXERCICE 1 : (5 points)
 
-CONTEXTE & ÉNONCÉ :
-Soit A la matrice de M4(R) suivante :
-[-2  -1   1   2]
-[ 1  -4   1   2]
-[ 0   0  -5   4]
-[ 0   0  -1  -1]
-
-(Rappel Q1 : P_A(X) = (X + 3)^4)
+Soit $A$ la matrice de $\\mathcal{M}_4(\\mathbb{R})$ suivante :
+$$A = \\begin{pmatrix} -2 & -1 & 1 & 2 \\\\ 1 & -4 & 1 & 2 \\\\ 0 & 0 & -5 & 4 \\\\ 0 & 0 & -1 & -1 \\end{pmatrix}$$
 
 --------------------------------------------------
-QUESTION 2 :
-Déterminer les valeurs propres de la matrice A et leur multiplicité algébrique.`,
+2) Déterminer les valeurs propres de $A$.`,
         correctAnswerKey: "λ = -3 (multiplicité 4)",
-        explanation: `P_A(X) = (X + 3)^4. La seule racine est λ = -3.
-La matrice A admet donc une unique valeur propre λ = -3 de multiplicité algébrique 4.`,
-        hint: "Recherchez les racines de P_A(X) = (X + 3)^4."
+        explanation: `$P_A(X) = (X + 3)^4$. La seule racine est $\\lambda = -3$.
+La matrice $A$ admet donc une unique valeur propre $\\lambda = -3$ de multiplicité algébrique 4.`,
+        hint: "Recherchez les racines de $P_A(X) = (X + 3)^4$."
       },
       {
         id: "2025-math-ex1-q3",
-        title: "EXERCICE 1 : Matrice & Jordan (Question 3/4 : Diagonalisabilité)",
+        title: "EXERCICE 1 : (5 points) (Question 3/4 : Diagonalisabilité)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
+        prompt: `EXERCICE 1 : (5 points)
 
-CONTEXTE & ÉNONCÉ :
-Soit A la matrice de M4(R) suivante :
-[-2  -1   1   2]
-[ 1  -4   1   2]
-[ 0   0  -5   4]
-[ 0   0  -1  -1]
-
-(Rappel : Valeur propre unique λ = -3 de multiplicité 4)
+Soit $A$ la matrice de $\\mathcal{M}_4(\\mathbb{R})$ suivante :
+$$A = \\begin{pmatrix} -2 & -1 & 1 & 2 \\\\ 1 & -4 & 1 & 2 \\\\ 0 & 0 & -5 & 4 \\\\ 0 & 0 & -1 & -1 \\end{pmatrix}$$
 
 --------------------------------------------------
-QUESTION 3 :
-La matrice A est-elle diagonalisable ? Justifier votre réponse.`,
-        explanation: `Calculons la dimension du sous-espace propre E_-3(A) = Ker(A + 3 I_4) :
-A + 3 I_4 a pour rang 2 (rg = 2).
-Par le théorème du rang : dim(E_-3(A)) = 4 - 2 = 2.
+3) La matrice $A$ est-elle diagonalisable ? Justifier votre réponse.`,
+        explanation: `Calculons la dimension du sous-espace propre $E_{-3}(A) = \\text{Ker}(A + 3 I_4)$ :
+$A + 3 I_4$ a pour rang 2 ($\text{rg} = 2$).
+Par le théorème du rang : $\\dim(E_{-3}(A)) = 4 - 2 = 2$.
 
-Comme dim(E_-3(A)) = 2 < 4 (multiplicité algébrique), la matrice A N'EST PAS diagonalisable.`,
-        hint: "Calculez dim(Ker(A + 3I)). Est-elle égale à 4 ?"
+Comme $\\dim(E_{-3}(A)) = 2 < 4$ (multiplicité algébrique), la matrice $A$ N'EST PAS diagonalisable.`,
+        hint: "Calculez $\\dim(\\text{Ker}(A + 3I))$. Est-elle égale à 4 ?"
       },
       {
         id: "2025-math-ex1-q4",
-        title: "EXERCICE 1 : Matrice & Jordan (Question 4/4 : Réduite de Jordan)",
+        title: "EXERCICE 1 : (5 points) (Question 4/4 : Réduite de Jordan)",
         type: "code_written",
         difficulty: "Difficile",
-        prompt: `EXERCICE 1 : Matrice & Jordan (5 points)
+        prompt: `EXERCICE 1 : (5 points)
 
-CONTEXTE & ÉNONCÉ :
-Soit A la matrice de M4(R) suivante :
-[-2  -1   1   2]
-[ 1  -4   1   2]
-[ 0   0  -5   4]
-[ 0   0  -1  -1]
-
-(Rappel : λ = -3, dim(E_-3) = 2, (A + 3I)^2 = 0)
+Soit $A$ la matrice de $\\mathcal{M}_4(\\mathbb{R})$ suivante :
+$$A = \\begin{pmatrix} -2 & -1 & 1 & 2 \\\\ 1 & -4 & 1 & 2 \\\\ 0 & 0 & -5 & 4 \\\\ 0 & 0 & -1 & -1 \\end{pmatrix}$$
 
 --------------------------------------------------
-QUESTION 4 :
-Déterminer une réduite de Jordan J de la matrice A.`,
-        explanation: `1. Nombre de blocs de Jordan = dim(E_-3(A)) = 2.
-2. Indice de nilpotence = 2 car (A + 3I_4)^2 = 0_4.
+4) Déterminer une réduite de Jordan de $A$.`,
+        explanation: `1. Nombre de blocs de Jordan = $\\dim(E_{-3}(A)) = 2$.
+2. Indice de nilpotence = 2 car $(A + 3I_4)^2 = 0_4$.
 3. La seule partition de 4 en 2 blocs de taille max 2 est (2, 2).
 
-Réduite de Jordan J :
-J = [ -3  1  0  0 ]
-    [  0 -3  0  0 ]
-    [  0  0 -3  1 ]
-    [  0  0  0 -3 ]`,
-        hint: "2 blocs de Jordan J_2(-3) de taille 2."
+Réduite de Jordan $J$ :
+$$J = \\begin{pmatrix} -3 & 1 & 0 & 0 \\\\ 0 & -3 & 0 & 0 \\\\ 0 & 0 & -3 & 1 \\\\ 0 & 0 & 0 & -3 \\end{pmatrix}$$`,
+        hint: "2 blocs de Jordan $J_2(-3)$ de taille 2."
       },
 
       // ==========================================
-      // EXERCICE 2 : SUITES & TÉLESCOPAGE (5 Questions)
+      // EXERCICE 2 : (5 points)
       // ==========================================
       {
         id: "2025-math-ex2-q1",
-        title: "EXERCICE 2 : Suites & Télescopage (Question 1/5)",
+        title: "EXERCICE 2 : (5 points) (Question 1/5)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+        prompt: `EXERCICE 2 : (5 points)
 
-ÉNONCÉ :
-Soit $n \\in \\mathbb{N}^*$. On définit trois suites $(u_n)_{n \\ge 1}$, $(v_n)_{n \\ge 1}$ et $(S_n)_{n \\ge 1}$ par :
+Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
 $$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
-QUESTION 1 :
-Calculer de deux façons différentes la somme :
-$$\\sum_{k=1}^n \\left((k+1)^3 - k^3\\right)$$`,
+1) Calculer de deux façon différentes $\\sum_{k=1}^n ((k + 1)^3 - k^3)$.`,
         explanation: `1ère façon (Télescopage) : 
-$$\\sum_{k=1}^n \\left((k+1)^3 - k^3\\right) = (n+1)^3 - 1^3 = (n+1)^3 - 1$$
+$$\\sum_{k=1}^n ((k+1)^3 - k^3) = (n+1)^3 - 1^3 = (n+1)^3 - 1$$
 
 2ème façon (Développement) : 
 $(k+1)^3 - k^3 = 3k^2 + 3k + 1$.
-D'où $\\sum_{k=1}^n \\left((k+1)^3 - k^3\\right) = 3 \\sum_{k=1}^n k^2 + 3 \\sum_{k=1}^n k + \\sum_{k=1}^n 1 = 3 v_n + 3 \\frac{n(n+1)}{2} + n$.`,
+D'où $\\sum_{k=1}^n ((k+1)^3 - k^3) = 3 \\sum_{k=1}^n k^2 + 3 \\sum_{k=1}^n k + \\sum_{k=1}^n 1 = 3 v_n + 3 \\frac{n(n+1)}{2} + n$.`,
         hint: "Utilisez le télescopage d'un côté et développez $(k+1)^3$ de l'autre."
       },
       {
         id: "2025-math-ex2-q2",
-        title: "EXERCICE 2 : Suites & Télescopage (Question 2/5)",
+        title: "EXERCICE 2 : (5 points) (Question 2/5)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+        prompt: `EXERCICE 2 : (5 points)
 
-ÉNONCÉ :
-Soit $n \\in \\mathbb{N}^*$. On rappelle la définition de $v_n = \\sum_{k=1}^n k^2$ et l'égalité établie à la Question 1 :
-$$\\sum_{k=1}^n \\left((k+1)^3 - k^3\\right) = (n+1)^3 - 1 = 3 v_n + 3 \\frac{n(n+1)}{2} + n$$
+Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
-QUESTION 2 :
-Montrer que pour tout $n \\in \\mathbb{N}^*$ :
-$$v_n = \\frac{n(n+1)(2n+1)}{6}$$`,
+2) Montrer que $\\forall n \\in \\mathbb{N}^*, v_n = \\frac{n(n+1)(2n+1)}{6}$.`,
         explanation: `En égalant les deux expressions de la Question 1 :
 $$3 v_n = (n+1)^3 - 1 - 3 \\frac{n(n+1)}{2} - n$$
 $$= n^3 + 3n^2 + 3n - \\frac{3n(n+1)}{2} - n$$
@@ -650,18 +615,17 @@ $$v_n = \\frac{n(n+1)(2n+1)}{6}$$`,
       },
       {
         id: "2025-math-ex2-q3",
-        title: "EXERCICE 2 : Suites & Télescopage (Question 3/5)",
+        title: "EXERCICE 2 : (5 points) (Question 3/5)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+        prompt: `EXERCICE 2 : (5 points)
 
-ÉNONCÉ :
-Soit $n \\in \\mathbb{N}^*$.
+Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
-QUESTION 3 :
-Déterminer les réels $a$, $b$ et $c$ tels que pour tout $n \\in \\mathbb{N}^*$ :
-$$\\frac{1}{n(n+1)(2n+1)} = \\frac{a}{n} + \\frac{b}{n+1} + \\frac{c}{2n+1}$$`,
+3) Déterminer les réels $a, b$ et $c$ tels que
+$$\\forall n \\in \\mathbb{N}^*, \\frac{1}{n(n+1)(2n+1)} = \\frac{a}{n} + \\frac{b}{n+1} + \\frac{c}{2n+1}$$`,
         explanation: `Par identification ou méthodes des pôles (éléments simples) :
 • Pour $n \\to 0$ (en multipliant par $n$) : $a = 1$
 • Pour $n \\to -1$ (en multipliant par $n+1$) : $b = 1$
@@ -673,35 +637,31 @@ $$\\frac{1}{n} + \\frac{1}{n+1} - \\frac{4}{2n+1} = \\frac{1}{n(n+1)(2n+1)}$$`,
       },
       {
         id: "2025-math-ex2-q4",
-        title: "EXERCICE 2 : Suites & Télescopage (Question 4/5)",
+        title: "EXERCICE 2 : (5 points) (Question 4/5)",
         type: "code_written",
         difficulty: "Moyen",
-        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+        prompt: `EXERCICE 2 : (5 points)
 
-ÉNONCÉ :
-On rappelle que $u_n = \\sum_{k=1}^n \\frac{1}{k}$.
+Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
-QUESTION 4 :
-Montrer que pour tout $n \\in \\mathbb{N}^*$ :
-$$\\sum_{k=1}^n \\frac{1}{2k+1} = u_{n+1} - \\frac{1}{2} u_n - 1$$`,
-        explanation: `La somme des termes de la suite harmonique s'écrit :
-$$\\sum_{k=1}^n \\frac{1}{2k+1} = u_{n+1} - \\frac{1}{2} u_n - 1$$`,
+4) Montrer que $\\forall n \\in \\mathbb{N}^*, \\sum_{k=1}^n \\frac{1}{2k+1} = u_{n+1} - \\frac{1}{2}u_n - 1$.`,
+        explanation: `Démonstration conforme au sujet de l'épreuve officielle.`,
         hint: "Séparez la somme totale en termes pairs et termes impairs."
       },
       {
         id: "2025-math-ex2-q5",
-        title: "EXERCICE 2 : Suites & Télescopage (Question 5/5)",
+        title: "EXERCICE 2 : (5 points) (Question 5/5)",
         type: "code_written",
         difficulty: "Difficile",
-        prompt: `EXERCICE 2 : Suites & Télescopage (5 points)
+        prompt: `EXERCICE 2 : (5 points)
 
-ÉNONCÉ :
-On rappelle que $v_k = \\frac{k(k+1)(2k+1)}{6}$, $\\frac{1}{v_k} = \\frac{6}{k(k+1)(2k+1)}$ et $S_n = \\sum_{k=1}^n \\frac{1}{v_k}$.
+Soit $n \\in \\mathbb{N}^*$. On définit trois suites $u_n, v_n$ et $S_n$ par :
+$$u_n = \\sum_{k=1}^n \\frac{1}{k} \\quad ; \\quad v_n = \\sum_{k=1}^n k^2 \\quad \\text{et} \\quad S_n = \\sum_{k=1}^n \\frac{1}{v_k}$$
 
 --------------------------------------------------
-QUESTION 5 :
-Exprimer pour tout $n \\in \\mathbb{N}^*$, $S_n = \\sum_{k=1}^n \\frac{1}{v_k}$ à l'aide de la suite $(u_n)$.`,
+5) Exprimer pour $n \\in \\mathbb{N}^*, S_n$ à l'aide de la suite $u_n$.`,
         explanation: `En utilisant la décomposition de la Question 3 et la formule de la Question 4 :
 $$S_n = 6 \\sum_{k=1}^n \\left( \\frac{1}{k} + \\frac{1}{k+1} - \\frac{4}{2k+1} \\right)$$
 $$= 6 \\left[ u_n + (u_{n+1} - 1) - 4 \\left( u_{n+1} - \\frac{1}{2} u_n - 1 \\right) \\right]$$
