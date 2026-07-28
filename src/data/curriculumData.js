@@ -89,7 +89,7 @@ def parcours_bfs(graph, start, forbidden):
         hint: "Utilisez collections.deque() pour popleft() en O(1) et set(forbidden)."
       },
 
-      // EXERCICE 3 : ADRESSAGE IP (CONTEXTE INCLUS DANS CHAQUE QUESTION)
+      // EXERCICE 3 : ADRESSAGE IP (ÉNONCÉ DU SUJET ET QUESTION PAR ÉCRAN)
       {
         id: "2025-info-ex3-q1",
         title: "Exercice 3 : Adressage IP (Question 1/5)",
@@ -97,7 +97,7 @@ def parcours_bfs(graph, start, forbidden):
         difficulty: "Moyen",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 ESATIC-Services exploite deux sites (Abidjan et Yamoussoukro) interconnectés par VPN.
 • Bloc IPv4 attribué : 172.30.0.0/20
 • Bloc IPv6 attribué : 2001:db8:bf::/48
@@ -122,7 +122,7 @@ Pour le LAN IT (100 machines), quel masque IPv4 minimise le gaspillage tout en g
         difficulty: "Facile",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 ESATIC-Services - Site d'Abidjan (Département Finance : 40 postes).
 • Réseau Finance attribué : 172.30.6.64/26.
 
@@ -145,7 +145,7 @@ Quelle est l'adresse de diffusion du sous-réseau 172.30.6.64/26 (réseau Financ
         difficulty: "Facile",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 ESATIC-Services - Plan d'adressage IPv4.
 
 --------------------------------------------------
@@ -167,7 +167,7 @@ Combien d'adresses utilisables contient un bloc /26 ?`,
         difficulty: "Moyen",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-ÉNONCÉ CONTEXTUEL IPv6 :
+ÉNONCÉ IPv6 :
 • Bloc IPv6 attribué : 2001:db8:bf::/48
 • Règle entreprise : « l'ID-Sous-réseau est égal au numéro de VLAN »
 • Réseau Wi-Fi Visiteurs : VLAN 30
@@ -191,7 +191,7 @@ Quel préfixe IPv6 /64 conviendrait au réseau Wi-Fi Visiteurs ?`,
         difficulty: "Moyen",
         prompt: `Exercice 3 : Adressage IP (5 pts)
 
-ÉNONCÉ CONTEXTUEL IPv6 :
+ÉNONCÉ IPv6 :
 Autoconfiguration IPv6 sur les commutateurs et hôtes ESATIC-Services.
 
 --------------------------------------------------
@@ -207,15 +207,15 @@ Que se passe-t-il si aucun Router Advertisement (RA) n'est émis dans un réseau
         hint: "SLAAC nécessite les messages RA."
       },
 
-      // EXERCICE 4 : ASSURANCE AUTO (ÉNONCÉ INCLUS DANS CHAQUE QUESTION)
+      // EXERCICE 4 : ASSURANCE AUTO (ÉNONCÉ DU SUJET ET QUESTION PAR ÉCRAN)
       {
         id: "2025-info-ex4-q1a",
-        title: "Exercice 4 : Assurance Auto (1.a : Identification des Entités)",
+        title: "Exercice 4 : Assurance Auto (Question 1.a : Entités & Propriétés)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients :
 • Un client peut souscrire plusieurs contrats auto ; un contrat est associé à un seul véhicule.
 • Un véhicule n'appartient qu'à un seul client à un moment donné.
@@ -225,7 +225,7 @@ Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de
 • Chaque sinistre donne lieu à un suivi de traitement (état : en cours, traité, refusé) et une évaluation du montant pris en charge.
 
 --------------------------------------------------
-TRAVAIL À FAIRE (Question 1.a) :
+QUESTION 1.a :
 Identifiez les différentes entités avec leurs propriétés respectives.`,
         explanation: `ENTITÉS ET LEURS PROPRIÉTÉS RESPECTIVES :
 
@@ -238,12 +238,12 @@ Identifiez les différentes entités avec leurs propriétés respectives.`,
       },
       {
         id: "2025-info-ex4-q1b",
-        title: "Exercice 4 : Assurance Auto (1.b : Modèle Entité-Association)",
+        title: "Exercice 4 : Assurance Auto (Question 1.b : Modèle MCD)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients :
 • Un client peut souscrire plusieurs contrats auto ; un contrat est associé à un seul véhicule.
 • Un véhicule n'appartient qu'à un seul client à un moment donné.
@@ -253,7 +253,7 @@ Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de
 • Chaque sinistre donne lieu à un suivi de traitement (état : en cours, traité, refusé) et une évaluation du montant pris en charge.
 
 --------------------------------------------------
-TRAVAIL À FAIRE (Question 1.b) :
+QUESTION 1.b :
 Proposer le modèle entité-association (MCD) avec les associations et les cardinalités.`,
         explanation: `ASSOCIATIONS ET CARDINALITÉS DU MCD :
 
@@ -265,12 +265,12 @@ Proposer le modèle entité-association (MCD) avec les associations et les cardi
       },
       {
         id: "2025-info-ex4-q2",
-        title: "Exercice 4 : Assurance Auto (2 : Modèle Relationnel MLD)",
+        title: "Exercice 4 : Assurance Auto (Question 2 : Modèle MLD)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients :
 • Un client peut souscrire plusieurs contrats auto ; un contrat est associé à un seul véhicule.
 • Un véhicule n'appartient qu'à un seul client à un moment donné.
@@ -280,7 +280,7 @@ Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de
 • Chaque sinistre donne lieu à un suivi de traitement (état : en cours, traité, refusé) et une évaluation du montant pris en charge.
 
 --------------------------------------------------
-TRAVAIL À FAIRE (Question 2) :
+QUESTION 2 :
 Déduire le modèle relationnel associé (MLD).`,
         explanation: `MODÈLE RELATIONNEL (MLD) :
 
@@ -294,16 +294,17 @@ Déduire le modèle relationnel associé (MLD).`,
       },
       {
         id: "2025-info-ex4-q3",
-        title: "Exercice 4 : Assurance Auto (3 : Scripts SQL DDL)",
+        title: "Exercice 4 : Assurance Auto (Question 3 : Scripts SQL DDL)",
         type: "code_written",
         difficulty: "Moyen",
         prompt: `Exercice 4 : Gestion d'une assurance automobile (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
-Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients (CLIENT, VEHICULE, CONTRAT, GARANTIE, SINISTRE).
+ÉNONCÉ :
+Une compagnie d'assurance souhaite gérer les contrats d'assurance automobile de ses clients :
+• Entités : CLIENT, VEHICULE, CONTRAT, GARANTIE, SINISTRE.
 
 --------------------------------------------------
-TRAVAIL À FAIRE (Question 3) :
+QUESTION 3 :
 Donner les scripts SQL permettant de créer les tables issues du modèle relationnel en utilisant les contraintes nommées (CONSTRAINT pk_..., CONSTRAINT fk_..., CONSTRAINT chk_...).`,
         explanation: `SCRIPTS SQL DDL AVEC CONTRAINTES NOMMÉES :
 
@@ -346,7 +347,7 @@ CREATE TABLE SINISTRE (
         hint: "Utilisez la syntaxe CONSTRAINT nom_contrainte PRIMARY KEY / FOREIGN KEY / CHECK."
       },
 
-      // EXERCICE 5 : PHP - PDO & SÉCURITÉ (ÉNONCÉ ET QUESTION PAR ÉCRAN)
+      // EXERCICE 5 : PHP - PDO & SÉCURITÉ (ÉNONCÉ DU SUJET ET QUESTION PAR ÉCRAN)
       {
         id: "2025-info-ex5-q1a",
         title: "Exercice 5 : PHP - PDO & Sécurité (Question 1.a : Connexion PDO)",
@@ -354,11 +355,11 @@ CREATE TABLE SINISTRE (
         difficulty: "Moyen",
         prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Dans le cadre du développement de la plateforme ESATIC-Services, vous devez sécuriser l'accès aux données des utilisateurs enregistrés dans une base de données MySQL ('esatic').
 
 --------------------------------------------------
-TRAVAIL À FAIRE (Question 1.a) :
+QUESTION 1.a :
 Établissez une connexion PDO sécurisée à la base de données avec gestion d'erreurs d'exception (Try/Catch).`,
         explanation: `try {
     $pdo = new PDO('mysql:host=localhost;dbname=esatic', 'user', 'pass', [
@@ -376,12 +377,12 @@ TRAVAIL À FAIRE (Question 1.a) :
         difficulty: "Moyen",
         prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Plateforme ESATIC-Services - Connexion à la base MySQL via $pdo.
 L'utilisateur saisit son login ($login) et son mot de passe ($password).
 
 --------------------------------------------------
-TRAVAIL À FAIRE (Question 1.b) :
+QUESTION 1.b :
 Implémentez une requête préparée sécurisée contre les injections SQL pour vérifier les identifiants de l'utilisateur.`,
         explanation: `$stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE login = :login");
 $stmt->execute([':login' => $login]);
@@ -399,7 +400,7 @@ if ($user && password_verify($password, $user['password_hash'])) {
         difficulty: "Facile",
         prompt: `Exercice 5 : PHP - PDO & Sécurité (3 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Sécurité des comptes utilisateurs ESATIC-Services.
 
 --------------------------------------------------
@@ -415,7 +416,7 @@ Quelle méthode doit être utilisée pour stocker les mots de passe de manière 
         hint: "Utilisez password_hash()."
       },
 
-      // EXERCICE 6 : POO JAVA & COLLECTIONS (ÉNONCÉ ET QUESTION PAR ÉCRAN)
+      // EXERCICE 6 : POO JAVA & COLLECTIONS (ÉNONCÉ DU SUJET ET QUESTION PAR ÉCRAN)
       {
         id: "2025-info-ex6-q1",
         title: "Exercice 6 : POO Java & Collections (Question 1/3 : Choix de Collection)",
@@ -423,7 +424,7 @@ Quelle méthode doit être utilisée pour stocker les mots de passe de manière 
         difficulty: "Facile",
         prompt: `Exercice 6 : Modélisation UML & Collections Java (4 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 On modélise une gestion de bibliothèque d'ouvrage à l'ESATIC.
 public class Livre {
     private String isbn; // Format unique ex: "123-4567890123"
@@ -448,8 +449,8 @@ Quelle collection Java de la Java Collections Framework (JCF) utiliser pour stoc
         difficulty: "Moyen",
         prompt: `Exercice 6 : Modélisation UML & Collections Java (4 pts)
 
-ÉNONCÉ CONTEXTUEL :
-Classe Livre (isbn: String). On souhaite garantir l'unicité lors de l'ajout d'un livre.
+ÉNONCÉ :
+Classe Livre (isbn: String). On souhaite garantir l'unicité lors de l'ajout d'un livre dans la bibliothèque.
 
 --------------------------------------------------
 QUESTION 2 :
@@ -475,7 +476,7 @@ public boolean ajouterLivre(Livre livre) {
         difficulty: "Facile",
         prompt: `Exercice 6 : Modélisation UML & Collections Java (4 pts)
 
-ÉNONCÉ CONTEXTUEL :
+ÉNONCÉ :
 Collections Java modernes vs Legacy.
 
 --------------------------------------------------
